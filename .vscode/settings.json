@@ -3,5 +3,7 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "emmet.triggerExpansionOnTab": true,
+  "files.associations": { "*html": "html" }
 }
