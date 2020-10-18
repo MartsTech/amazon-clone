@@ -12,17 +12,16 @@ function Product({ title, image, price, rating }) {
         </p>
         <div className="product__rating">
           {Array(rating)
-          .fill()
-          .map((_, i) =>(
-          <p>⭐</p>
-          ))}
+            .fill()
+            .map((_, i) => (
+              <span role="img" aria-label="star">
+                ⭐
+              </span>
+            ))}
         </div>
       </div>
 
-      <img
-        src={image}
-        alt=""
-      />
+      <img src={image} alt="" />
 
       <button>Add to Basket</button>
     </div>
