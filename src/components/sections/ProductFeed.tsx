@@ -1,5 +1,6 @@
 import Product from "@element/Product";
 import { productType } from "@type/productType";
+import FlipMove from "react-flip-move";
 
 interface ProductFeedProps {
   products: productType[];
@@ -7,7 +8,7 @@ interface ProductFeedProps {
 
 const ProductFeed: React.FC<ProductFeedProps> = ({ products }) => {
   return (
-    <div
+    <FlipMove
       className="grid grid-flow-row-dense md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4
     md:-mt-52 mx-auto"
     >
@@ -26,7 +27,7 @@ const ProductFeed: React.FC<ProductFeedProps> = ({ products }) => {
       {products.slice(5).map((product) => (
         <Product key={product.id} data={product} />
       ))}
-    </div>
+    </FlipMove>
   );
 };
 
