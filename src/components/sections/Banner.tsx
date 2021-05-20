@@ -18,15 +18,9 @@ const Banner: React.FC<BannerProps> = ({}) => {
         showThumbs={false}
         interval={5000}
       >
-        <div>
-          <img loading="lazy" src="/images/banner_1.jpg" alt="banner_1" />
-        </div>
-        <div>
-          <img loading="lazy" src="/images/banner_2.jpg" alt="banner_2" />
-        </div>
-        <div>
-          <img loading="lazy" src="/images/banner_3.jpg" alt="banner_3" />
-        </div>
+        <img loading="lazy" src="/images/banner_1.jpg" alt="banner_1" />
+        <img loading="lazy" src="/images/banner_2.jpg" alt="banner_2" />
+        <img loading="lazy" src="/images/banner_3.jpg" alt="banner_3" />
       </Carousel>
     </div>
   );
