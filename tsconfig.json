@@ -9,7 +9,8 @@
       "@template/*": ["components/templates/*"],
       "@style/*": ["styles/*"],
       "@slice/*": ["slices/*"],
-      "@type/*": ["types/*"]
+      "@type/*": ["types/*"],
+      "@config/*": ["configs/*"]
     },
     "outDir": "build/dist",
     "module": "esnext",
