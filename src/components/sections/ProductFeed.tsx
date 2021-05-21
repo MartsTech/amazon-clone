@@ -1,4 +1,4 @@
-import Product from "@element/Product";
+import Product from "@module/Product";
 import { productType } from "@type/productType";
 import FlipMove from "react-flip-move";
 
@@ -24,7 +24,17 @@ const ProductFeed: React.FC<ProductFeedProps> = ({ products }) => {
         ))}
       </div>
 
-      {products.slice(5).map((product) => (
+      {products.slice(5, 13).map((product) => (
+        <Product key={product.id} data={product} />
+      ))}
+
+      <div className="md:col-span-2">
+        {products.slice(13, 14).map((product) => (
+          <Product key={product.id} data={product} />
+        ))}
+      </div>
+
+      {products.slice(14).map((product) => (
         <Product key={product.id} data={product} />
       ))}
     </FlipMove>

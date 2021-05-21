@@ -10,7 +10,8 @@
       "@style/*": ["styles/*"],
       "@slice/*": ["slices/*"],
       "@type/*": ["types/*"],
-      "@config/*": ["configs/*"]
+      "@config/*": ["configs/*"],
+      "@util/*": ["utils/*"]
     },
     "outDir": "build/dist",
     "module": "esnext",
