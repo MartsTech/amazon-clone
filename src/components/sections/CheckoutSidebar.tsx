@@ -1,14 +1,37 @@
-import { selectItemsCount, selectTotal } from "@slice/basketSlice";
+import { selectItems, selectItemsCount, selectTotal } from "@slice/basketSlice";
 import { useSession } from "next-auth/client";
 import { useSelector } from "react-redux";
 import Currency from "react-currency-formatter";
+import { loadStripe } from "@stripe/stripe-js";
+import axios from "axios";
+import { reqBodyType } from "@type/reqBodyType";
 
 interface CheckoutSidebarProps {}
+
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
 
 const CheckoutSidebar: React.FC<CheckoutSidebarProps> = ({}) => {
   const itemsCount = useSelector(selectItemsCount);
   const totalPrice = useSelector(selectTotal);
+  const items = useSelector(selectItems);
   const [session] = useSession();
+
+  const createCheckoutSession = async () => {
+    const stripe = await stripePromise;
+
+    const checkoutSession = await axios.post("/api/create-checkout-session", {
+      items,
+      email: session?.user?.email as string,
+    } as reqBodyType);
+
+    const result = await stripe?.redirectToCheckout({
+      sessionId: checkoutSession.data.id,
+    });
+
+    if (result?.error) {
+      alert(result.error.message);
+    }
+  };
 
   return (
     <>
@@ -22,6 +45,8 @@ const CheckoutSidebar: React.FC<CheckoutSidebarProps> = ({}) => {
           </h2>
 
           <button
+            role="link"
+            onClick={createCheckoutSession}
             disabled={!session}
             className={`button mt-2 ${
               !session &&
