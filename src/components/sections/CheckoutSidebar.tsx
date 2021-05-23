@@ -8,7 +8,7 @@ import { useSession } from "next-auth/client";
 import { useDispatch, useSelector } from "react-redux";
 import Currency from "react-currency-formatter";
 import { loadStripe } from "@stripe/stripe-js";
-import axios from "axios";
+import axios from "@config/axios";
 import { reqBodyType } from "@type/reqBodyType";
 
 interface CheckoutSidebarProps {}
@@ -26,7 +26,7 @@ const CheckoutSidebar: React.FC<CheckoutSidebarProps> = ({}) => {
   const createCheckoutSession = async () => {
     const stripe = await stripePromise;
 
-    const checkoutSession = await axios.post("/api/create-checkout-session", {
+    const checkoutSession = await axios.post(`/api/create-checkout-session`, {
       items,
       email: session?.user?.email as string,
     } as reqBodyType);
