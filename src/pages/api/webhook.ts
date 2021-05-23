@@ -4,6 +4,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import Stripe from "stripe";
 import { orderType } from "@type/orderType";
 
+//
 const app = !admin.apps.length
   ? admin.initializeApp({
       credential: admin.credential.cert({
