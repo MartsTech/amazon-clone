@@ -1,24 +1,24 @@
-import CheckoutTemplate from "@template/CheckoutTemplate";
+import SuccessTemplate from "@template/SuccessTemplate";
 import { GetServerSideProps } from "next";
 import { getSession } from "next-auth/client";
 import Head from "next/head";
 
-interface CheckoutProps {}
+interface SuccessPageProps {}
 
-const Checkout: React.FC<CheckoutProps> = () => {
+const SuccessPage: React.FC<SuccessPageProps> = () => {
   return (
     <>
       <Head>
-        <title>Checkout</title>
+        <title>Success</title>
         <meta name="description" content="Amazon clone created with Next.JS" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <CheckoutTemplate />
+      <SuccessTemplate />
     </>
   );
 };
 
-export default Checkout;
+export default SuccessPage;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const session = await getSession(context);

@@ -2,6 +2,7 @@ import ProductFeed from "@section/ProductFeed";
 import HomeTemplate from "@template/HomeTemplate";
 import { productType } from "@type/productType";
 import { GetServerSideProps } from "next";
+import { getSession } from "next-auth/client";
 import Head from "next/head";
 
 interface HomeProps {
@@ -24,6 +25,8 @@ const Home: React.FC<HomeProps> = ({ products }) => {
 export default Home;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
+  const session = await getSession(context);
+
   const products = await fetch("https://fakestoreapi.com/products").then(
     (res) => res.json()
   );
@@ -31,6 +34,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   return {
     props: {
       products,
+      session,
     },
   };
 };
