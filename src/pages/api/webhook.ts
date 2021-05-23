@@ -2,6 +2,7 @@ import * as admin from "firebase-admin";
 import { buffer } from "micro";
 import { NextApiRequest, NextApiResponse } from "next";
 import Stripe from "stripe";
+import { orderType } from "@type/orderType";
 
 const app = !admin.apps.length
   ? admin.initializeApp({
@@ -31,10 +32,11 @@ const fulfillOrder = async (session: Stripe.Checkout.Session) => {
       amount_shipping: (session.total_details?.amount_shipping as number) / 100,
       images: JSON.parse(session.metadata?.images as string),
       timestamp: admin.firestore.FieldValue.serverTimestamp(),
-    })
+    } as orderType)
     .then(() => {
       console.log("Success: Order: " + session.id);
-    });
+    })
+    .then(() => {});
 };
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
