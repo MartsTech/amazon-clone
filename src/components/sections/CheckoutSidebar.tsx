@@ -26,13 +26,10 @@ const CheckoutSidebar: React.FC<CheckoutSidebarProps> = ({}) => {
   const createCheckoutSession = async () => {
     const stripe = await stripePromise;
 
-    const checkoutSession = await axios.post(
-      `https://amazon-clone-ley43zikg-martstech.vercel.app/api/create-checkout-session`,
-      {
-        items,
-        email: session?.user?.email as string,
-      } as reqBodyType
-    );
+    const checkoutSession = await axios.post(`/api/create-checkout-session`, {
+      items,
+      email: session?.user?.email as string,
+    } as reqBodyType);
 
     if (checkoutSession) {
       console.log(checkoutSession);

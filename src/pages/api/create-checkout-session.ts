@@ -2,9 +2,7 @@ import { reqBodyType } from "@type/reqBodyType";
 import { NextApiRequest, NextApiResponse } from "next";
 import { Stripe } from "stripe";
 
-const stripe: Stripe = require("stripe")(
-  "sk_test_51ItzghLMT7c0pt9wMKtG3Uv0ZnMh4C6WZy4tJtRCJpv59e4KiWFU59F99lPCPFfdDk9JWrygyBxV3Zcy3y6z132t00QLhWus2K"
-);
+const stripe: Stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const { items, email }: reqBodyType = req.body;
