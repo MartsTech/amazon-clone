@@ -26,7 +26,7 @@
   <a href="#license">License</a>
 </p>
 
-<img src="https://raw.githubusercontent.com/MartsTech/amazon-clone/main/public/images/app.png" alt="App" />
+![Template Screenshot](public/images/app.png?raw=true "Template Screenshot")
 
 ---
 
