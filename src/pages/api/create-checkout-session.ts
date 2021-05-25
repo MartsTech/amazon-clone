@@ -4,7 +4,6 @@ import { Stripe } from "stripe";
 
 const stripe: Stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
-//
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const { items, email }: reqBodyType = req.body;
 

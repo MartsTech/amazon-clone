@@ -31,6 +31,10 @@ const CheckoutSidebar: React.FC<CheckoutSidebarProps> = ({}) => {
       email: session?.user?.email as string,
     } as reqBodyType);
 
+    if (checkoutSession) {
+      console.log(checkoutSession);
+    }
+
     dispatch(clearBasket());
 
     const result = await stripe?.redirectToCheckout({
