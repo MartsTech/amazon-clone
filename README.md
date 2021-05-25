@@ -27,6 +27,9 @@
 </p>
 
 <img src="https://raw.githubusercontent.com/MartsTech/amazon-clone/main/public/images/app.png" alt="App" />
+
+---
+
 <img src="https://raw.githubusercontent.com/MartsTech/amazon-clone/main/public/images/stripe.png" alt="Stripe" />
 
 ---
