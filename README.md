@@ -26,7 +26,7 @@
   <a href="#license">License</a>
 </p>
 
-<img src="https://raw.githubusercontent.com/MartsTech/amazon-clone/main/public/app.png" />
+<img src="https://raw.githubusercontent.com/MartsTech/amazon-clone/main/public/images/app.png" />
 
 ---
 
