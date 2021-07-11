@@ -1,18 +1,6 @@
 {
   "compilerOptions": {
     "baseUrl": "src",
-    "paths": {
-      "@element/*": ["components/elements/*"],
-      "@module/*": ["components/modules/*"],
-      "@section/*": ["components/sections/*"],
-      "@layout/*": ["components/layouts/*"],
-      "@template/*": ["components/templates/*"],
-      "@style/*": ["styles/*"],
-      "@slice/*": ["slices/*"],
-      "@type/*": ["types/*"],
-      "@config/*": ["configs/*"],
-      "@util/*": ["utils/*"]
-    },
     "outDir": "build/dist",
     "module": "esnext",
     "target": "es5",
