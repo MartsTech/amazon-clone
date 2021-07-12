@@ -3,10 +3,14 @@ module.exports = {
   purge: ["./src/**/*.tsx"],
   darkMode: "class",
   theme: {
-    extend: {},
+    extend: {
+      screens: {
+        "1xl": "1440px",
+      },
+    },
   },
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [require("tailwind-scrollbar-hide")],
 };
