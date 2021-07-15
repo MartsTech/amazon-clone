@@ -1,8 +1,11 @@
+import Fuse from "fuse.js";
 import { makeAutoObservable, reaction } from "mobx";
+import { Product } from "types/product";
+import { store } from "./store";
 
 class SearchStore {
+  fuse: Fuse<Product>;
   searchQuery = "";
-  fuse: any;
   results: any;
   resultsOpen = false;
 
@@ -12,7 +15,6 @@ class SearchStore {
     reaction(
       () => this.searchQuery,
       (searchQuery) => {
-        console.log("hi");
         if (searchQuery.length > 0) {
           // this.results = this.fuse.search(searchQuery);
           this.resultsOpen = true;
@@ -23,6 +25,10 @@ class SearchStore {
       }
     );
   }
+
+  setFuse = (products: Product[]) => {
+    this.fuse = new Fuse(products, { keys: ["name", "category"] });
+  };
 
   setSearchQuery = (query: string) => {
     this.searchQuery = query;

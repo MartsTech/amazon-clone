@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .active_label {
+    @apply !left-3 !top-2 !text-sm !opacity-25;
+  }
+}

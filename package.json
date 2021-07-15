@@ -1,7 +1,9 @@
 {
-  "name": "src",
-  "version": "0.1.0",
+  "name": "amazon-clone",
+  "version": "3.0.0",
   "private": true,
+  "license": "MIT",
+  "author": "MartsTech",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -13,18 +15,25 @@
     "@material-ui/core": "^4.12.1",
     "@material-ui/icons": "^4.11.2",
     "@next-auth/firebase-adapter": "^0.1.2",
+    "axios": "^0.21.1",
     "firebase": "^8.7.1",
+    "firebase-admin": "^9.10.0",
+    "formik": "^2.2.9",
     "framer-motion": "^4.1.17",
+    "fuse.js": "^6.4.6",
     "mobx": "^6.3.2",
     "mobx-react-lite": "^3.2.0",
     "next": "11.0.1",
     "next-auth": "^3.27.3",
     "react": "17.0.2",
     "react-dom": "17.0.2",
+    "react-responsive-carousel": "^3.2.19",
+    "react-toastify": "^7.0.4",
     "react-tooltip": "^4.2.21",
     "react-top-loading-bar": "^2.0.1",
     "stripe": "^8.161.0",
-    "tailwind-scrollbar-hide": "^1.0.3"
+    "tailwind-scrollbar-hide": "^1.0.3",
+    "yup": "^0.32.9"
   },
   "devDependencies": {
     "@types/react": "^17.0.14",

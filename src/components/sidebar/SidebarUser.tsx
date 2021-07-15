@@ -1,4 +1,5 @@
 import AccountCircleRoundedIcon from "@material-ui/icons/AccountCircleRounded";
+import { signOut, useSession } from "next-auth/client";
 import { useRouter } from "next/router";
 import { useStore } from "stores/store";
 import SidebarMenuItem from "./SidebarMenuItem";
@@ -6,33 +7,33 @@ import SidebarMenuItem from "./SidebarMenuItem";
 interface SidebarUserProps {}
 
 const SidebarUser: React.FC<SidebarUserProps> = () => {
-  const {
-    commonStore: { toggleSidebar },
-  } = useStore();
+  const [session] = useSession();
+  const { toggleSidebar } = useStore().commonStore;
 
   const router = useRouter();
 
   return (
     <>
-      {false ? (
+      {session?.user ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img
-          className="w-12 h-12 rounded-full shadow-md hover:shadow-lg
-        transition-all duration-200 transform hover:scale-105
-        object-contain cursor-pointer"
+          src={session.user.image || "/images/default.jpg"}
           onClick={() => {
+            signOut();
             router.push("/profile");
             toggleSidebar();
           }}
-          src={"/images/default.jpg"}
           alt="avatar"
           data-tip="My Account"
           data-for="sidebarTooltip"
+          className="w-10 h-10 rounded-full shadow-md hover:shadow-lg
+          transition-all duration-200 transform hover:scale-105
+          object-contain cursor-pointer"
         />
       ) : (
         <SidebarMenuItem
           Icon={AccountCircleRoundedIcon}
-          path="/login"
+          path="/auth/login"
           tooltip="Login / Register"
         />
       )}

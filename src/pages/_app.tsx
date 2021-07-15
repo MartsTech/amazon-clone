@@ -1,3 +1,4 @@
+import AppLayout from "components/layouts/AppLayout";
 import DefaultLayout from "components/layouts/DefaultLayout";
 import { Provider as AuthProvider } from "next-auth/client";
 import { AppProps } from "next/app";
@@ -9,7 +10,9 @@ const App = ({ Component, pageProps }: AppProps) => {
     <AuthProvider session={pageProps.session}>
       <StoreContext.Provider value={store}>
         <DefaultLayout>
-          <Component {...pageProps} />
+          <AppLayout>
+            <Component {...pageProps} />
+          </AppLayout>
         </DefaultLayout>
       </StoreContext.Provider>
     </AuthProvider>
