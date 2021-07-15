@@ -4,6 +4,7 @@ import { Provider as AuthProvider } from "next-auth/client";
 import { AppProps } from "next/app";
 import { store, StoreContext } from "stores/store";
 import "styles/globals.css";
+import "styles/product.css";
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (

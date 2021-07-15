@@ -1,3 +1,5 @@
+const defaultTheme = require("tailwindcss/defaultTheme");
+
 module.exports = {
   mode: "jit",
   purge: ["./src/**/*.tsx"],
@@ -7,6 +9,13 @@ module.exports = {
       screens: {
         "1xl": "1440px",
       },
+      width: {
+        almost: "calc(100% - 4rem)",
+      },
+    },
+    screens: {
+      xs: "550px",
+      ...defaultTheme.screens,
     },
   },
   variants: {

@@ -15,7 +15,7 @@ const HeaderSearch: React.FC<HeaderSearchProps> = () => {
       <div
         className="py-[0.33rem] pr-[0.15rem] pl-[0.66rem] bg-white
         shadow-md rounded-lg text-sm flex items-center relative
-        sm:mr-4 w-1/2 sm:w-auto"
+        sm:mr-4 w-full sm:w-auto"
       >
         <SearchRoundedIcon className="opacity-75 transform scale-95" />
         <input

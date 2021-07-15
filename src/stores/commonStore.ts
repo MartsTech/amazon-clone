@@ -2,8 +2,7 @@ import { makeAutoObservable } from "mobx";
 
 class CommonStore {
   sidebarActive = false;
-  appLoaded = false;
-  category = "all";
+  appLoaded = true;
 
   constructor() {
     makeAutoObservable(this);

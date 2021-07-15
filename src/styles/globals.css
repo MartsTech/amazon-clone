@@ -3,7 +3,14 @@
 @tailwind utilities;
 
 @layer components {
+  body {
+    @apply !overflow-x-hidden;
+  }
   .active_label {
     @apply !left-3 !top-2 !text-sm !opacity-25;
+  }
+  .underline {
+    @apply absolute left-4 w-0 h-px bg-[#1a1a2c] 
+    bottom-2 transition-all duration-200;
   }
 }

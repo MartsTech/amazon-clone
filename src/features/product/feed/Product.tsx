@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 import { Product as ProductType } from "types/product";
 import { pageTransition, pageZoom } from "utils/animations";
+import ProductDetails from "./ProductDetails";
 import ProductImage from "./ProductImage";
 
 interface ProductProps {
@@ -20,11 +21,11 @@ const Product: React.FC<ProductProps> = ({ product }) => {
       transition={pageTransition}
       layout
       onClick={() => router.push(`/product/${product.id}`)}
-      className="w-1/4 bg-white m-4 rounded-lg shadow-md flex flex-col relative
-      transition-all duration-200 transform hover:scale-105 hover:shadow-lg product"
-      style={{ content: "View Product" }}
+      className="w-3/4 bg-white rounded-lg shadow-md flex flex-col
+      transition-all duration-200 transform hover:scale-105 hover:shadow-lg"
     >
       <ProductImage product={product} />
+      <ProductDetails product={product} />
     </motion.div>
   );
 };

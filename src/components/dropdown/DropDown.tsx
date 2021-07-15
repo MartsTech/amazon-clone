@@ -6,12 +6,14 @@ import DropDownItem from "./DropDownItem";
 
 interface DropDownProps {
   className: string;
+  menu?: string;
   items: string[];
   defaultItem: string;
 }
 
 const DropDown: React.FC<DropDownProps> = ({
   className,
+  menu,
   items,
   defaultItem,
 }) => {
@@ -39,8 +41,8 @@ const DropDown: React.FC<DropDownProps> = ({
         />
         {active && (
           <motion.ul
-            className="bg-white rounded-lg absolute top-10 right-0
-          list-none shadow-md z-10 h-44 overflow-scroll scrollbar-hide"
+            className={`bg-white rounded-lg absolute top-10 right-0
+          list-none shadow-md z-10 h-44 overflow-scroll scrollbar-hide ${menu}`}
             initial={{ opacity: 0, y: "-10%" }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: "-10%" }}

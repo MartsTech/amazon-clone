@@ -6,6 +6,7 @@ import { store } from "./store";
 
 class ProductStore {
   productRegistery = new Map<number, Product>();
+  activeCategory = "all departments";
 
   constructor() {
     makeAutoObservable(this);
@@ -35,6 +36,10 @@ class ProductStore {
 
     store.searchStore.setFuse(products);
     store.commonStore.setAppLoaded(true);
+  };
+
+  setActiveCategory = (category: string) => {
+    this.activeCategory = category;
   };
 }
 
