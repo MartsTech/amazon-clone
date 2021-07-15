@@ -1,18 +1,5 @@
 import DropDown from "components/dropdown/DropDown";
-
-const languages = [
-  "English",
-  "Spanish",
-  "French",
-  "German",
-  "Italian",
-  "Tamil",
-  "Hindi",
-  "Chinese",
-  "Russian",
-  "Japanese",
-  "Arabic",
-];
+import { languages } from "utils/data";
 
 interface HeaderLanguagesProps {}
 

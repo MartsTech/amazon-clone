@@ -1,35 +1,49 @@
-interface HeaderResultProps {}
+import Fuse from "fuse.js";
+import Image from "next/image";
+import { useRouter } from "next/router";
+import { useStore } from "stores/store";
+import { Product } from "types/product";
 
-const HeaderResult: React.FC<HeaderResultProps> = ({}) => {
+interface HeaderResultProps {
+  result: Fuse.FuseResult<Product>;
+}
+
+const HeaderResult: React.FC<HeaderResultProps> = ({
+  result: {
+    item: { id, image, title, description },
+  },
+}) => {
+  const { setSearchQuery } = useStore().searchStore;
+  const router = useRouter();
+
   return (
     <div
+      onClick={() => {
+        setSearchQuery("");
+        router.push(`/product/${id}`);
+      }}
       className="flex items-center transition-colors duration-200
     cursor-pointer hover:bg-gray-100"
     >
-      <div className="w-24 pb-12 bg-white flex relative">
-        {/*eslint-disable-next-line @next/next/no-img-element*/}
-        <img
-          className="object-contain p-1 absolute"
-          src={
-            "https://fakestoreapi.com/img/71YAIFU48IL._AC_UL640_QL65_ML3_.jpg"
-          }
+      <div
+        className="bg-white flex items-center justify-center"
+        style={{ flex: " 0 0 4.5rem" }}
+      >
+        <Image
+          height="50%"
+          width="50%"
+          objectFit="contain"
+          src={image}
           alt="product"
+          className="p-3"
         />
       </div>
-      <span className="overflow-hidden p-4 pl-2 flex-shrink">
-        <p
-          className="whitespace-nowrap overflow-ellipsis overflow-hidden
-        w-11/12 text-sm font-medium"
-        >
-          {"White Gold Plated Princess"}
+      <span className="p-4 pl-2 w-4/5">
+        <p className="flex-grow text-sm font-medium overflow-hidden line-clamp-1">
+          {title}
         </p>
-        <small
-          className="text-sm whitespace-nowrap overflow-ellipsis
-        overflow-hidden w-full block opacity-70"
-        >
-          {
-            "Classic Created Wedding Engagement Solitaire Diamond Promise Ring for Her. Gifts to spoil your love more for Engagement, Wedding, Anniversary, Valentine's Day..."
-          }
+        <small className="text-sm w-full opacity-70 line-clamp-1">
+          {description}
         </small>
       </span>
     </div>

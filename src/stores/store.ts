@@ -7,16 +7,16 @@ import SearchStore from "./searchStore";
 
 interface Store {
   commonStore: CommonStore;
-  searchStore: SearchStore;
   productStore: ProductStore;
+  searchStore: SearchStore;
   cartStore: CartStore;
   bookmarkStore: BookmarkStore;
 }
 
 export const store: Store = {
   commonStore: new CommonStore(),
-  searchStore: new SearchStore(),
   productStore: new ProductStore(),
+  searchStore: new SearchStore(),
   cartStore: new CartStore(),
   bookmarkStore: new BookmarkStore(),
 };

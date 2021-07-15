@@ -24,7 +24,6 @@ class ProductStore {
 
   loadProducts = async () => {
     store.commonStore.setAppLoaded(false);
-
     const products = shuffleArray(await agent.Products.list());
 
     runInAction(() => {
@@ -35,7 +34,6 @@ class ProductStore {
     });
 
     store.searchStore.setFuse(products);
-
     store.commonStore.setAppLoaded(true);
   };
 }

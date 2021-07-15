@@ -9,8 +9,8 @@ const HeaderBackButton: React.FC<HeaderBackButtonProps> = () => {
     <>
       {router.pathname !== "/" && (
         <button
-          className="relative py-[0.33rem] px-[0.66rem] bg-white
-              shadow-md rounded-lg text-sm mr-4 sm:mr-auto"
+          className="mr-4 sm:mr-auto py-[0.33rem] px-[0.66rem]
+          bg-white shadow-md rounded-lg text-sm relative"
           onClick={() => router.back()}
         >
           Back
