@@ -1,4 +1,5 @@
 import { makeAutoObservable, reaction } from "mobx";
+import { toast } from "react-toastify";
 import { Product } from "types/product";
 
 class CartStore {
@@ -10,10 +11,13 @@ class CartStore {
     makeAutoObservable(this);
 
     reaction(
-      () => this.cartRegistery,
-      (cartRegistery) => {
-        if (cartRegistery) {
-          window.localStorage.setItem("cart", JSON.stringify(cartRegistery));
+      () => this.cartRegistery.entries(),
+      (entries) => {
+        if (entries) {
+          window.localStorage.setItem(
+            "cart",
+            JSON.stringify(Array.from(entries))
+          );
         } else {
           window.localStorage.removeItem("cart");
         }
@@ -42,19 +46,20 @@ class CartStore {
     const item = this.cartRegistery.get(product.id);
 
     if (typeof item === "undefined") {
-      product.quantity = 1;
       this.cartRegistery.set(product.id, product);
     } else {
       item.quantity += 1;
       this.cartRegistery.set(item.id, item);
     }
+
+    window.localStorage.setItem("cart", JSON.stringify(this.cartRegistery));
   };
 
   removeFromCart = (id: number) => {
     const item = this.cartRegistery.get(id);
 
     if (typeof item === "undefined") {
-      console.warn("Item Not Found In Cart");
+      toast.error("Item Not Found In Cart");
       return;
     }
 

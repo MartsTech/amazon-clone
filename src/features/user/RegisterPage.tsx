@@ -35,7 +35,7 @@ const RegisterPage: React.FC<RegisterPageProps> = ({ providers }) => {
         onSubmit={async (values, { setErrors }) => {
           const { name, email, password } = values;
 
-          setAppLoading(false);
+          setAppLoading(true);
 
           signIn("credentials", {
             name,
@@ -46,7 +46,7 @@ const RegisterPage: React.FC<RegisterPageProps> = ({ providers }) => {
             setErrors({ error: res?.error });
           });
 
-          setAppLoading(true);
+          setAppLoading(false);
         }}
       >
         {({ handleSubmit, errors }) => (

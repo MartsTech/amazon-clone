@@ -34,7 +34,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ providers }) => {
         onSubmit={async (values, { setErrors }) => {
           const { email, password } = values;
 
-          setAppLoading(false);
+          setAppLoading(true);
 
           signIn("credentials", {
             email,
@@ -44,7 +44,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ providers }) => {
             setErrors({ error: res?.error });
           });
 
-          setAppLoading(true);
+          setAppLoading(false);
         }}
       >
         {({ handleSubmit, errors }) => (

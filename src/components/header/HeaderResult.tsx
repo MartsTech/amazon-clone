@@ -1,4 +1,5 @@
 import Fuse from "fuse.js";
+import { observer } from "mobx-react-lite";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useStore } from "stores/store";
@@ -14,12 +15,22 @@ const HeaderResult: React.FC<HeaderResultProps> = ({
   },
 }) => {
   const { setSearchQuery } = useStore().searchStore;
+  const { loadProduct, removeSelectedProduct, selectedProduct } =
+    useStore().productStore;
   const router = useRouter();
 
   return (
     <div
-      onClick={() => {
+      onClick={async () => {
         setSearchQuery("");
+
+        await loadProduct(id);
+
+        if (selectedProduct?.id !== id) {
+          removeSelectedProduct();
+          await loadProduct(id);
+        }
+
         router.push(`/product/${id}`);
       }}
       className="flex items-center transition-colors duration-200
@@ -50,4 +61,4 @@ const HeaderResult: React.FC<HeaderResultProps> = ({
   );
 };
 
-export default HeaderResult;
+export default observer(HeaderResult);

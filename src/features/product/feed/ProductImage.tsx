@@ -7,16 +7,15 @@ interface ProductImageProps {
 }
 
 const ProductImage: React.FC<ProductImageProps> = ({
-  product: { id, image, title },
+  product: { id, image, title, discount },
 }) => {
   return (
     <motion.div
       layoutId={id.toString()}
       className="w-full pb-[75%] relative overflow-hidden 
       block rounded-t-lg product__image"
-      style={{ content: "View Product" }}
     >
-      {true && (
+      {discount && (
         <span
           className="absolute transform translate-x-1/2 -translate-y-full
           rotate-45 top-12 right-8 z-10 py-[0.33rem] px-12 bg-[#f90]

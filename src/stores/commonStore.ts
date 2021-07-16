@@ -1,8 +1,8 @@
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable, runInAction } from "mobx";
 
 class CommonStore {
   sidebarActive = false;
-  appLoading = true;
+  appLoading = false;
 
   constructor() {
     makeAutoObservable(this);
@@ -13,7 +13,9 @@ class CommonStore {
   };
 
   setAppLoading = (state: boolean) => {
-    this.appLoading = state;
+    runInAction(() => {
+      this.appLoading = state;
+    });
   };
 }
 

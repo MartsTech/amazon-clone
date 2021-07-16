@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react";
 import { ToastContainer } from "react-toastify";
 import LoadingBar from "react-top-loading-bar";
 import { useStore } from "stores/store";
-import ScrollToTop from "./ScrollToTop";
+import RouteChange from "./RouteChange";
 
 interface AppLayoutProps {}
 
@@ -12,7 +12,7 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
   const loadingBar = useRef<any>(null);
 
   useEffect(() => {
-    if (!appLoading) {
+    if (appLoading) {
       loadingBar.current?.continuousStart();
     } else {
       loadingBar.current.complete();
@@ -21,7 +21,7 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
 
   return (
     <>
-      <ScrollToTop />
+      <RouteChange />
       <ToastContainer position="bottom-right" hideProgressBar />
       <LoadingBar ref={loadingBar} height={3} color="#f90" shadow={true} />
       {children}

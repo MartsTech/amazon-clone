@@ -1,9 +1,9 @@
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 
-interface ScrollToTopProps {}
+interface RouteChangeProps {}
 
-const ScrollToTop: React.FC<ScrollToTopProps> = () => {
+const RouteChange: React.FC<RouteChangeProps> = () => {
   const { pathname } = useRouter();
 
   useEffect(() => {
@@ -17,4 +17,4 @@ const ScrollToTop: React.FC<ScrollToTopProps> = () => {
   return null;
 };
 
-export default ScrollToTop;
+export default RouteChange;

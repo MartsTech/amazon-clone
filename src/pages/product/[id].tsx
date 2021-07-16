@@ -1,40 +1,41 @@
-import HomePage from "features/home/HomePage";
+import ProductPage from "features/product/details/ProductPage";
 import { observer } from "mobx-react-lite";
 import { GetServerSideProps } from "next";
 import { getSession } from "next-auth/client";
 import Head from "next/head";
 import { useEffect } from "react";
 import { useStore } from "stores/store";
+import { useGetIntId } from "utils/useGetIntId";
 
-interface HomeProps {}
+interface ProductProps {}
 
-const Home: React.FC<HomeProps> = () => {
-  const { totalProducts, loadProducts } = useStore().productStore;
+const Product: React.FC<ProductProps> = () => {
+  const { totalProducts, selectedProduct, loadProduct } =
+    useStore().productStore;
+  const id = useGetIntId();
 
   useEffect(() => {
     if (totalProducts == 0) {
-      loadProducts();
+      loadProduct(id);
     }
-  }, [totalProducts, loadProducts]);
+  }, [totalProducts, loadProduct, id]);
 
   return (
     <>
       <Head>
-        <title>Amazon Clone</title>
+        <title>{selectedProduct?.title}</title>
       </Head>
-      <HomePage />
+      <ProductPage />
     </>
   );
 };
 
-export default observer(Home);
+export default observer(Product);
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const session = await getSession(context);
 
   return {
-    props: {
-      session,
-    },
+    props: { session },
   };
 };

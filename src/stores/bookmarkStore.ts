@@ -1,4 +1,5 @@
 import { makeAutoObservable, reaction } from "mobx";
+import { toast } from "react-toastify";
 import { Product } from "types/product";
 
 class BookmarkStore {
@@ -10,12 +11,12 @@ class BookmarkStore {
     makeAutoObservable(this);
 
     reaction(
-      () => this.bookmarkRegistery,
-      (bookmarkRegistery) => {
-        if (bookmarkRegistery) {
+      () => this.bookmarkRegistery.entries(),
+      (entries) => {
+        if (entries) {
           window.localStorage.setItem(
             "bookmarks",
-            JSON.stringify(bookmarkRegistery)
+            JSON.stringify(Array.from(entries))
           );
         } else {
           window.localStorage.removeItem("bookmarks");
@@ -44,7 +45,7 @@ class BookmarkStore {
     const item = this.bookmarkRegistery.get(id);
 
     if (typeof item === "undefined") {
-      console.warn("Item Not Found In Bookmarks");
+      toast.error("Item Not Found In Bookmarks");
       return;
     }
 

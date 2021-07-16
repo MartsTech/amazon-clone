@@ -11,6 +11,7 @@ const requests = {
 
 const Products = {
   list: () => requests.get<Product[]>("/products"),
+  details: (id: number) => requests.get<Product>(`/products/${id}`),
 };
 
 const agent = {

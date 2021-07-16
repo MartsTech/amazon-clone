@@ -6,6 +6,7 @@ import { store } from "./store";
 
 class ProductStore {
   productRegistery = new Map<number, Product>();
+  selectedProduct?: Product;
   activeCategory = "all departments";
 
   constructor() {
@@ -24,18 +25,52 @@ class ProductStore {
   }
 
   loadProducts = async () => {
-    store.commonStore.setAppLoading(false);
+    store.commonStore.setAppLoading(true);
     const products = shuffleArray(await agent.Products.list());
 
     runInAction(() => {
       products.forEach((product) => {
-        product.quantity = 1;
-        this.productRegistery.set(product.id, product);
+        this.setProduct(product);
       });
     });
 
     store.searchStore.setFuse(products);
+    store.commonStore.setAppLoading(false);
+  };
+
+  loadProduct = async (id: number) => {
+    let product = this.productRegistery.get(id);
+
+    if (product) {
+      runInAction(() => {
+        this.selectedProduct = product;
+      });
+
+      return product;
+    }
+
     store.commonStore.setAppLoading(true);
+
+    product = await agent.Products.details(id);
+    this.setProduct(product);
+
+    runInAction(() => {
+      this.selectedProduct = product;
+    });
+
+    store.commonStore.setAppLoading(false);
+
+    return product;
+  };
+
+  removeSelectedProduct = () => {
+    this.selectedProduct = undefined;
+  };
+
+  private setProduct = (product: Product) => {
+    product.quantity = 1;
+    product.discount = Math.random() >= 0.5;
+    this.productRegistery.set(product.id, product);
   };
 
   setActiveCategory = (category: string) => {

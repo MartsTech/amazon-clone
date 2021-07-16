@@ -2,6 +2,7 @@ import AppLayout from "components/layouts/AppLayout";
 import DefaultLayout from "components/layouts/DefaultLayout";
 import { Provider as AuthProvider } from "next-auth/client";
 import { AppProps } from "next/app";
+import "react-toastify/dist/ReactToastify.min.css";
 import { store, StoreContext } from "stores/store";
 import "styles/globals.css";
 import "styles/product.css";
