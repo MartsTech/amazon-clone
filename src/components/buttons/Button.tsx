@@ -5,7 +5,7 @@ interface ButtonProps
     ButtonHTMLAttributes<HTMLButtonElement>,
     HTMLButtonElement
   > {
-  variant: "primary" | "secondary";
+  variant: "primary" | "secondary" | "outlined";
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -25,7 +25,11 @@ const Button: React.FC<ButtonProps> = ({
        active:scale-95
     ${disabled && "opacity-50"}
     ${className} ${
-        variant == "primary" ? "bg-[#f90] hover:scale-105" : "bg-[#1a1a2c]"
+        variant == "primary"
+          ? "bg-[#f90] hover:scale-105"
+          : variant == "secondary"
+          ? "bg-[#1a1a2c]"
+          : "bg-none text-gray-400 font-medium !border-2 !border-solid !border-gray-300 shadow-lg "
       }`}
     >
       {children}

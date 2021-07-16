@@ -2,7 +2,7 @@ import { makeAutoObservable } from "mobx";
 
 class CommonStore {
   sidebarActive = false;
-  appLoaded = true;
+  appLoading = true;
 
   constructor() {
     makeAutoObservable(this);
@@ -12,8 +12,8 @@ class CommonStore {
     this.sidebarActive = !this.sidebarActive;
   };
 
-  setAppLoaded = (state: boolean) => {
-    this.appLoaded = state;
+  setAppLoading = (state: boolean) => {
+    this.appLoading = state;
   };
 }
 

@@ -1,5 +1,5 @@
 import AccountCircleRoundedIcon from "@material-ui/icons/AccountCircleRounded";
-import { signOut, useSession } from "next-auth/client";
+import { useSession } from "next-auth/client";
 import { useRouter } from "next/router";
 import { useStore } from "stores/store";
 import SidebarMenuItem from "./SidebarMenuItem";
@@ -19,7 +19,6 @@ const SidebarUser: React.FC<SidebarUserProps> = () => {
         <img
           src={session.user.image || "/images/default.jpg"}
           onClick={() => {
-            signOut();
             router.push("/profile");
             toggleSidebar();
           }}

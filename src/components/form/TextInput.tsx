@@ -1,15 +1,20 @@
 import { useField } from "formik";
 import { motion } from "framer-motion";
-import { useRef, useState } from "react";
 import { errorAnimation } from "utils/animations";
 
 interface TextFieldProps {
   name: string;
   label: string;
   type: string;
+  Icon?: JSX.Element;
 }
 
-const TextField: React.FC<TextFieldProps> = ({ name, label, ...props }) => {
+const TextField: React.FC<TextFieldProps> = ({
+  name,
+  label,
+  Icon,
+  ...props
+}) => {
   const [field, { touched, error, value }] = useField(name);
 
   return (
@@ -43,6 +48,7 @@ const TextField: React.FC<TextFieldProps> = ({ name, label, ...props }) => {
           {error}
         </motion.p>
       )}
+      {Icon}
     </div>
   );
 };

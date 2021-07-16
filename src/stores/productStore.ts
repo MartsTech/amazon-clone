@@ -24,7 +24,7 @@ class ProductStore {
   }
 
   loadProducts = async () => {
-    store.commonStore.setAppLoaded(false);
+    store.commonStore.setAppLoading(false);
     const products = shuffleArray(await agent.Products.list());
 
     runInAction(() => {
@@ -35,7 +35,7 @@ class ProductStore {
     });
 
     store.searchStore.setFuse(products);
-    store.commonStore.setAppLoaded(true);
+    store.commonStore.setAppLoading(true);
   };
 
   setActiveCategory = (category: string) => {

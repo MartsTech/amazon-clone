@@ -8,16 +8,16 @@ import ScrollToTop from "./ScrollToTop";
 interface AppLayoutProps {}
 
 const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
-  const { appLoaded } = useStore().commonStore;
+  const { appLoading } = useStore().commonStore;
   const loadingBar = useRef<any>(null);
 
   useEffect(() => {
-    if (!appLoaded) {
+    if (!appLoading) {
       loadingBar.current?.continuousStart();
     } else {
       loadingBar.current.complete();
     }
-  }, [appLoaded]);
+  }, [appLoading]);
 
   return (
     <>

@@ -10,7 +10,7 @@ const IsAuth: React.FC<IsAuthProps> = ({ children }) => {
 
   useEffect(() => {
     if (!session) {
-      router.replace("/auth/signin");
+      router.replace("/auth/login");
     }
   }, [session, router]);
 

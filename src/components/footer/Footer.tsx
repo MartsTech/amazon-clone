@@ -8,7 +8,7 @@ const Footer: React.FC<FooterProps> = () => {
   return (
     <div
       className="mt-auto bg-[#eaeaea] flex flex-col w-full
-      sm:pl-24 max-w-screen-1xl mx-auto"
+      sm:pl-24 mx-auto"
     >
       <FooterDisclaimer />
       <FooterLinks />

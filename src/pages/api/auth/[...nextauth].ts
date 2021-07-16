@@ -1,39 +1,28 @@
 import { FirebaseAdapter } from "@next-auth/firebase-adapter";
-import { db, auth } from "configs/firebase";
+import { db } from "configs/firebase";
+import login from "features/auth/login";
+import register from "features/auth/register";
 import NextAuth from "next-auth";
 import Providers from "next-auth/providers";
 
 export default NextAuth({
   providers: [
     Providers.Credentials({
-      name: "Sign In",
+      name: "Credentials",
       credentials: {
-        email: { label: "Username", type: "text" },
+        name: { label: "Name", type: "text" },
+        email: { label: "Email", type: "text" },
         password: { label: "Password", type: "password" },
       },
 
-      async authorize(credentials, req) {
-        const { email, password } = credentials;
+      async authorize(credentials, _req) {
+        const { name, email, password } = credentials;
 
-        const res = await auth.signInWithEmailAndPassword(email, password);
-
-        if (!res.user?.emailVerified) {
-          try {
-            auth.currentUser?.sendEmailVerification();
-          } catch (error) {
-            throw new Error("Email varification in already send");
-          }
-
-          throw new Error(
-            "Email is not verified. We have sent the verification link again. Please check your inbox/spam."
-          );
+        if (typeof name === "undefined") {
+          return login(email, password);
+        } else {
+          return register(name, email, password);
         }
-
-        return {
-          name: res.user?.displayName,
-          email: res.user?.email,
-          image: res.user?.photoURL,
-        };
       },
     }),
     Providers.Google({
