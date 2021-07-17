@@ -5,14 +5,14 @@ import { useEffect } from "react";
 interface IsAuthProps {}
 
 const IsAuth: React.FC<IsAuthProps> = ({ children }) => {
-  const [session] = useSession();
+  const [session, loading] = useSession();
   const router = useRouter();
 
   useEffect(() => {
-    if (!session) {
-      router.replace("/auth/login");
+    if (!session && !loading) {
+      router.replace("/auth/login?next" + router.pathname);
     }
-  }, [session, router]);
+  }, [session, loading, router]);
 
   return <>{children}</>;
 };

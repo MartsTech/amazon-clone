@@ -86,6 +86,10 @@ class CartStore {
 
     this.cartRegistery.delete(id);
   };
+
+  clearCart = () => {
+    this.cartRegistery.clear();
+  };
 }
 
 export default CartStore;

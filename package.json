@@ -9,12 +9,14 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "gen-env-types": "npx gen-env-types .env.local -o src/types/env.d.ts -e ."
+    "gen-env-types": "npx gen-env-types .env.local -o src/types/env.d.ts -e .",
+    "stripe-listen": "stripe listen --forward-to localhost:3000/api/webhook"
   },
   "dependencies": {
     "@material-ui/core": "^4.12.1",
     "@material-ui/icons": "^4.11.2",
     "@next-auth/firebase-adapter": "^0.1.2",
+    "@stripe/react-stripe-js": "^1.4.1",
     "@stripe/stripe-js": "^1.16.0",
     "@tailwindcss/line-clamp": "^0.2.1",
     "axios": "^0.21.1",

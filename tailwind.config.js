@@ -12,6 +12,9 @@ module.exports = {
       width: {
         almost: "calc(100% - 4rem)",
       },
+      fontFamily: {
+        body: ["Nunito Sans", "sans-serif"],
+      },
     },
     screens: {
       xs: "550px",

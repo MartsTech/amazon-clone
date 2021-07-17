@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from "axios";
 import { Product } from "types/product";
 
-axios.defaults.baseURL = "https://fakestoreapi.com";
+const apiUrl = "https://fakestoreapi.com";
 
 const responseBody = <T>(response: AxiosResponse<T>) => response.data;
 
@@ -10,8 +10,8 @@ const requests = {
 };
 
 const Products = {
-  list: () => requests.get<Product[]>("/products"),
-  details: (id: number) => requests.get<Product>(`/products/${id}`),
+  list: () => requests.get<Product[]>(`${apiUrl}/products`),
+  details: (id: number) => requests.get<Product>(`${apiUrl}/products/${id}`),
 };
 
 const agent = {

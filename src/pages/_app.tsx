@@ -6,6 +6,7 @@ import "react-toastify/dist/ReactToastify.min.css";
 import { store, StoreContext } from "stores/store";
 import "styles/globals.css";
 import "styles/product.css";
+import "styles/payment.css";
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (

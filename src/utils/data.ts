@@ -1,3 +1,10 @@
+export const elFonts = [
+  {
+    cssSrc:
+      "https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@800&display=swap",
+  },
+];
+
 export const languages = [
   "English",
   "Spanish",
@@ -20,13 +27,7 @@ export const categories = [
   "women's clothing",
 ];
 
-export const currency = [
-  "$ - USD",
-  "₹ - INR",
-  "£ - GBP",
-  "€ - EUR",
-  "¥ - JPY",
-];
+export const currency = ["$ - USD", "₹ - INR", "£ - GBP", "€ - EUR", "¥ - JPY"];
 
 export const footerLinks = [
   {

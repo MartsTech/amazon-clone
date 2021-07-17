@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react";
 import { ToastContainer } from "react-toastify";
 import LoadingBar from "react-top-loading-bar";
 import { useStore } from "stores/store";
-import RouteChange from "./RouteChange";
+import RouteChange from "./ScrollToTop";
 
 interface AppLayoutProps {}
 

@@ -1,0 +1,6 @@
+.StripeElement {
+  width: calc(100% - 4rem);
+  position: absolute;
+  bottom: 2rem;
+  left: 2rem;
+}

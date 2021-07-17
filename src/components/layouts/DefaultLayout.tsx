@@ -8,13 +8,13 @@ interface DefaultLayoutProps {}
 const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
   return (
     <div
-      className="w-screen min-h-screen relative bg-[#fafafa] 
-    flex flex-col"
+      className="w-screen min-h-screen relative 
+      bg-[#fafafa] flex flex-col"
     >
       <Sidebar />
       <div
-        className="sm:pl-24 w-full max-w-screen-1xl mx-auto
-      flex-grow flex flex-col"
+        className="sm:pl-24 w-full max-w-screen-1xl 
+        mx-auto flex-grow flex flex-col"
       >
         <AnimatePresence exitBeforeEnter>
           <AnimateSharedLayout>
