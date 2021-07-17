@@ -21,7 +21,7 @@ const CartPage: React.FC<CartPageProps> = () => {
       transition={pageTransition}
       className="py-12 px-6 sm:p-12 sm:pt-20"
     >
-      <h4 className="text-2xl mb-12">Your Cart</h4>
+      <h4 className="text-2xl mb-12 font-semibold">Your Cart</h4>
       {cartTotalItems > 0 ? (
         <div
           className="flex flex-col-reverse md:flex-row 

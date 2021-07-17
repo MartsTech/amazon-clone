@@ -2,34 +2,34 @@ import Button from "components/buttons/Button";
 import Image from "next/image";
 import { useRouter } from "next/router";
 
-interface CartEmptyProps {}
+interface BookmarkEmptyProps {}
 
-const CartEmpty: React.FC<CartEmptyProps> = () => {
+const BookmarkEmpty: React.FC<BookmarkEmptyProps> = () => {
   const router = useRouter();
 
   return (
     <div
       className="flex flex-col md:flex-row md:space-x-10 
-    space-y-10 md:space-y-0"
+    space-y-10 md:space-y-0 p-6 sm:p-12"
     >
       <div className="flex-[60%] relative p-32">
         <Image
           layout="fill"
           objectFit="contain"
-          src="/images/emptyCart.svg"
-          alt="empty cart"
+          src="/images/emptyBookmarks.svg"
+          alt="empty bookmarks"
           className="py-4 px-8 absolute"
         />
       </div>
       <div className="bg-white rounded-lg shadow-sm items-start p-6 md:p-8">
-        <h4 className="text-2xl mb-2 font-semibold">Your cart feels lonely.</h4>
+        <h4 className="text-2xl mb-2 font-semibold">Its empty here.</h4>
         <p className="mb-12">
-          Your shopping cart lives to serve. Give it purpose - fill it with
-          books, electronicts, videos, etc. and make it happy.
+          Somethings catching your eye? Add your favorite items to Bookmarks,
+          and check them out anytime you wish.
         </p>
         <div className="mt-4">
           <Button onClick={() => router.push("/")} variant="primary">
-            Continue Shopping
+            Go Shopping
           </Button>
         </div>
       </div>
@@ -37,4 +37,4 @@ const CartEmpty: React.FC<CartEmptyProps> = () => {
   );
 };
 
-export default CartEmpty;
+export default BookmarkEmpty;
