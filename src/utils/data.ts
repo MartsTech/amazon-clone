@@ -15,15 +15,9 @@ export const languages = [
 export const categories = [
   "all departments",
   "electronics",
-  "jewellery",
+  "jewelery",
   "men's clothing",
   "women's clothing",
-  "appliances",
-  "toys",
-  "prime video",
-  "movies & TV",
-  "music",
-  "software",
 ];
 
 export const currency = [

@@ -30,9 +30,14 @@ class CartStore {
   }
 
   get cartTotal() {
-    return Array.from(this.cartRegistery.values())
-      .reduce((amount, product) => product.price * product.quantity + amount, 0)
-      .toFixed(2);
+    return parseInt(
+      Array.from(this.cartRegistery.values())
+        .reduce(
+          (amount, product) => product.price * product.quantity + amount,
+          0
+        )
+        .toFixed(2)
+    );
   }
 
   get cartTotalItems() {
@@ -63,12 +68,23 @@ class CartStore {
       return;
     }
 
-    if (item.quantity > 2) {
+    if (item.quantity > 1) {
       item.quantity -= 1;
       this.cartRegistery.set(item.id, item);
     } else {
       this.cartRegistery.delete(id);
     }
+  };
+
+  removeAllItems = (id: number) => {
+    const item = this.cartRegistery.get(id);
+
+    if (typeof item === "undefined") {
+      toast.error("Item Not Found In Cart");
+      return;
+    }
+
+    this.cartRegistery.delete(id);
   };
 }
 

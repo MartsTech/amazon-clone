@@ -39,6 +39,15 @@ class ProductStore {
   };
 
   loadProduct = async (id: number) => {
+    await this.getProduct(id);
+
+    if (this.selectedProduct?.id !== id) {
+      this.removeSelectedProduct();
+      await this.getProduct(id);
+    }
+  };
+
+  getProduct = async (id: number) => {
     let product = this.productRegistery.get(id);
 
     if (product) {
