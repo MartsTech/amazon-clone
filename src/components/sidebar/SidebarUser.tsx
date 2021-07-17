@@ -32,7 +32,7 @@ const SidebarUser: React.FC<SidebarUserProps> = () => {
       ) : (
         <SidebarMenuItem
           Icon={AccountCircleRoundedIcon}
-          path="/auth/login"
+          paths={["/auth/login", "/auth/register", "/auth/password-reset"]}
           tooltip="Login / Register"
         />
       )}

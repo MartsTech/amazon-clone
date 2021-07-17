@@ -6,24 +6,24 @@ import { useStore } from "stores/store";
 
 interface SidebarMenuItemProps {
   Icon: OverridableComponent<SvgIconTypeMap<{}, "svg">>;
-  path: string;
+  paths: string[];
   tooltip: string;
   count?: number;
 }
 
 const SidebarMenuItem: React.FC<SidebarMenuItemProps> = ({
   Icon,
-  path,
+  paths,
   tooltip,
   count,
 }) => {
   const { toggleSidebar } = useStore().commonStore;
 
   const router = useRouter();
-  const active = router.route === path;
+  const active = paths.some((path) => path === router.route);
 
   return (
-    <Link href={path} passHref>
+    <Link href={paths[0]} passHref>
       <div
         className="my-4 relative cursor-pointer"
         data-tip={tooltip}

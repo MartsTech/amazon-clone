@@ -1,3 +1,5 @@
+import AdminPage from "features/auth/admin/AdminPage";
+import IsAuth from "features/auth/IsAuth";
 import { GetServerSideProps } from "next";
 import { getSession } from "next-auth/client";
 import Head from "next/head";
@@ -6,9 +8,12 @@ interface AdminProps {}
 
 const Admin: React.FC<AdminProps> = () => {
   return (
-    <Head>
-      <title>Admin</title>
-    </Head>
+    <IsAuth>
+      <Head>
+        <title>Admin</title>
+      </Head>
+      <AdminPage />
+    </IsAuth>
   );
 };
 

@@ -15,6 +15,7 @@ const createCheckoutSession = async (
       ({
         description: product.description,
         quantity: product.quantity,
+        tax_rates: ["txr_1ItzgWE4K4vYNE8J6tVoJrYj"],
         price_data: {
           currency: "EUR",
           unit_amount: product.price * 100,

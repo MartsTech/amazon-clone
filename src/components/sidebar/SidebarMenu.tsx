@@ -14,22 +14,22 @@ const SidebarMenu: React.FC<SidebarMenuProps> = () => {
 
   return (
     <div className="flex flex-col">
-      <SidebarMenuItem Icon={HomeRoundedIcon} path="/" tooltip="Home" />
+      <SidebarMenuItem Icon={HomeRoundedIcon} paths={["/"]} tooltip="Home" />
       <SidebarMenuItem
         Icon={ShoppingCartRoundedIcon}
-        path="/cart"
+        paths={["/cart"]}
         tooltip="Cart"
         count={cartTotalItems}
       />
       <SidebarMenuItem
         Icon={BookmarksRoundedIcon}
-        path="/bookmarks"
+        paths={["/bookmarks"]}
         tooltip="Bookmarks"
         count={totalBookmarks}
       />
       <SidebarMenuItem
         Icon={WatchLaterRoundedIcon}
-        path="/orders"
+        paths={["/orders"]}
         tooltip="Orders"
       />
     </div>

@@ -6,7 +6,7 @@
 
 @layer components {
   body {
-    @apply !overflow-x-hidden font-body text-base;
+    @apply !overflow-x-hidden font-body;
   }
   .active_label {
     @apply !left-3 !top-2 !text-sm !opacity-25;

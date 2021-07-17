@@ -66,3 +66,8 @@ export const footerLinks = [
     ],
   },
 ];
+
+export const successMessages = [
+  "Verify your email to complete registration. Check your inbox/spam for verification email.",
+  "Check your mail for the password reset link.",
+];
