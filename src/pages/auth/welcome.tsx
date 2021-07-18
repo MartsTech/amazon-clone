@@ -1,3 +1,5 @@
+import IsAuth from "features/auth/IsAuth";
+import WelcomePage from "features/user/WelcomePage";
 import { GetServerSideProps } from "next";
 import { getSession } from "next-auth/client";
 import Head from "next/head";
@@ -6,9 +8,12 @@ interface WelcomeProps {}
 
 const Welcome: React.FC<WelcomeProps> = () => {
   return (
-    <Head>
-      <title>Welcome</title>
-    </Head>
+    <IsAuth>
+      <Head>
+        <title>Welcome</title>
+      </Head>
+      <WelcomePage />
+    </IsAuth>
   );
 };
 

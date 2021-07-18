@@ -1,0 +1,68 @@
+.check > input[type="checkbox"],
+.check > input[type="radio"] {
+  width: 0;
+  height: 0;
+  position: relative;
+  display: none;
+  visibility: hidden;
+}
+
+.check > input[type="checkbox"] + label,
+.check > input[type="radio"] + label {
+  position: relative;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  padding-left: 3rem;
+  outline: none;
+  width: 20rem;
+  font-weight: 700;
+  left: 0;
+  opacity: 0.25;
+  top: 0;
+}
+
+.check > input[type="radio"] + label {
+  padding: 0.25rem 1rem 0.25rem 3rem;
+  opacity: 1;
+}
+
+.check > input[type="checkbox"] + label::before,
+.check > input[type="checkbox"] + label::after,
+.check > input[type="radio"] + label::before,
+.check > input[type="radio"] + label::after {
+  width: 1.25rem;
+  height: 1.25rem;
+  position: absolute;
+  content: "";
+  background: #fff;
+  border: 2px solid #1a1a2c;
+  border-radius: 0.25rem;
+  left: 1rem;
+}
+
+.check > input[type="radio"] + label::before,
+.check > input[type="radio"] + label::after {
+  border-radius: 99px;
+}
+
+.check > input[type="checkbox"] + label::after,
+.check > input[type="radio"] + label::after {
+  background: #f90;
+  border: none;
+  transform: scale(0);
+  transition: all 0.2s;
+}
+
+.check > input[type="checkbox"]:checked + label,
+.check > input[type="radio"]:checked + label {
+  left: 0;
+  top: 0;
+  font-size: 1rem;
+  opacity: 1;
+}
+
+.check > input[type="checkbox"]:checked + label::after,
+.check > input[type="radio"]:checked + label::after {
+  transform: scale(0.6);
+}

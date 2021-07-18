@@ -15,4 +15,8 @@
     @apply absolute left-4 w-0 h-px bg-[#1a1a2c] 
     bottom-2 transition-all duration-200;
   }
+  .form_check {
+    @apply w-5 h-5 absolute bg-white border-2 border-solid 
+    border-[#1a1a2c] rounded-md left-4;
+  }
 }

@@ -28,7 +28,7 @@ const RegisterPage: React.FC<RegisterPageProps> = ({ providers }) => {
 
   return (
     <CenterLayout>
-      <h4 className="text-2xl mb-8">Create your Account</h4>
+      <h4 className="text-2xl mb-8 font-semibold">Create your Account</h4>
       <Formik
         validationSchema={validationSchema}
         initialValues={{ name: "", email: "", password: "", error: null }}

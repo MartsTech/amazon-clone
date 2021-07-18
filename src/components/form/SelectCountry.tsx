@@ -1,44 +1,46 @@
 import { useField } from "formik";
 import { motion } from "framer-motion";
 import { errorAnimation } from "utils/animations";
+import { countries } from "utils/data";
 
-interface TextFieldProps {
+interface SelectCountryProps {
   name: string;
   label: string;
   type: string;
-  Icon?: JSX.Element;
 }
 
-const TextField: React.FC<TextFieldProps> = ({
+const SelectCountry: React.FC<SelectCountryProps> = ({
   name,
   label,
-  type,
-  Icon,
   ...props
 }) => {
   const [field, { touched, error, value }] = useField(name);
 
   return (
     <div className="relative mt-4 group">
-      <input
+      <select
         {...field}
         {...props}
-        type={type}
         name={name}
         className={`border-none
-      bg-[#fafafa] rounded-lg pt-6 pb-2 px-3 shadow-inner drop-shadow-md
-      outline-none w-80 font-bold transition-all duration-200 focus:shadow-md
-      hover:shadow-lg active:shadow-lg ${
-        touched && error && "ring-1 ring-[#dc143c]"
-      }`}
-      />
+        bg-[#fafafa] rounded-lg pt-6 pb-2 px-3 shadow-inner drop-shadow-md
+        outline-none w-80 font-bold transition-all duration-200 focus:shadow-md
+        hover:shadow-lg active:shadow-lg ${error && "ring-1 ring-[#dc143c]"}`}
+      >
+        <option selected value="" />
+        {countries.map((item, index) => (
+          <option key={index} value={item.abbreviation}>
+            {item.country}
+          </option>
+        ))}
+      </select>
       <label
         htmlFor={name}
         className={`absolute left-4 top-4 text-base opacity-75
-        transition-all duration-200 group-focus-within:active_label
-        group-hover:active_label group-active:active_label ${
-          (value != "" || type == "date") && "active_label"
-        }`}
+          transition-all duration-200 group-focus-within:active_label
+          group-hover:active_label group-active:active_label ${
+            value != "" && "active_label"
+          }`}
       >
         {label}
       </label>
@@ -54,9 +56,8 @@ const TextField: React.FC<TextFieldProps> = ({
           {error}
         </motion.p>
       )}
-      {Icon}
     </div>
   );
 };
 
-export default TextField;
+export default SelectCountry;

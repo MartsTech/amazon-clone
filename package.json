@@ -15,7 +15,6 @@
   "dependencies": {
     "@material-ui/core": "^4.12.1",
     "@material-ui/icons": "^4.11.2",
-    "@next-auth/firebase-adapter": "^0.1.2",
     "@stripe/react-stripe-js": "^1.4.1",
     "@stripe/stripe-js": "^1.16.0",
     "@tailwindcss/line-clamp": "^0.2.1",

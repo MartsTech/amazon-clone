@@ -1,5 +1,3 @@
-import { FirebaseAdapter } from "@next-auth/firebase-adapter";
-import { db } from "configs/firebase";
 import login from "features/auth/login";
 import register from "features/auth/register";
 import NextAuth from "next-auth";
@@ -30,7 +28,6 @@ export default NextAuth({
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
   ],
-  adapter: FirebaseAdapter(db),
   pages: {
     signIn: "/auth/signin",
     signOut: "/auth/signout",

@@ -1,11 +1,19 @@
-import { auth } from "configs/firebase";
+import { auth, db } from "configs/firebase";
 
 const register = async (name: string, email: string, password: string) => {
   const res = await auth.createUserWithEmailAndPassword(email, password);
 
+  const photoURL = `https://i.pravatar.cc/150?u=${email}`;
+
   auth.currentUser?.updateProfile({
     displayName: name,
-    photoURL: `https://i.pravatar.cc/150?u=${email}`,
+    photoURL,
+  });
+
+  await db.collection("users").doc(email).set({
+    displayName: name,
+    email: email,
+    photoURL: photoURL,
   });
 
   if (!res.user?.emailVerified) {
