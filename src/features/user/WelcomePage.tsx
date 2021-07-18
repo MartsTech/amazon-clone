@@ -42,7 +42,7 @@ const WelcomePage: React.FC<WelcomePageProps> = () => {
       exit="out"
       variants={pageSlide}
       transition={pageTransition}
-      className="p-12 flex flex-col items-center"
+      className="p-6 xs:p-12 flex flex-col items-center"
     >
       <WelcomeHeader />
       <Formik
@@ -88,8 +88,9 @@ const WelcomePage: React.FC<WelcomePageProps> = () => {
           <Form
             onSubmit={handleSubmit}
             autoComplete="off"
-            className="grid semi:grid-cols-2 space-x-4 bg-white 
-            rounded-lg overflow-hidden p-8 shadow-md"
+            className="grid semi:grid-cols-2 space-y-6 xs:space-y-0
+             xs:space-x-4 bg-white rounded-lg overflow-hidden
+             p-6 xs:p-8 shadow-md"
           >
             <div className="p-4 text-xl font-semibold">
               <h5 className="mb-4">Delivery Address</h5>
@@ -106,6 +107,7 @@ const WelcomePage: React.FC<WelcomePageProps> = () => {
                 name="terms"
                 label="Accept Terms & Conditions"
                 type="checkbox"
+                value={values.terms}
                 onClick={() => setFieldValue("terms", !values.terms)}
               />
               <Button

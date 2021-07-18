@@ -6,12 +6,14 @@ import { store } from "./store";
 
 class PaymentStore {
   stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
-  paymentMethod = "card";
+  paymentMethod: "card" | "cash" = "card";
   processing = false;
   succeeded = false;
   disabled = false;
   cardHolder = "";
   error: string | null = null;
+  orderId?: string;
+  deliveryCharges = true;
 
   constructor() {
     makeAutoObservable(this);
@@ -19,6 +21,10 @@ class PaymentStore {
 
   setCardHolder = (name: string) => {
     this.cardHolder = name;
+  };
+
+  setPaymentMethod = (method: "card" | "cash") => {
+    this.paymentMethod = method;
   };
 
   handleCardChange = (e: StripeCardElementChangeEvent) => {

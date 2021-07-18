@@ -19,7 +19,7 @@ const CartCheckout: React.FC<CartCheckoutProps> = () => {
       className="bg-white rounded-lg shadow-md items-start p-6 md:p-8
     flex-[50%]"
     >
-      <h5>Checkout</h5>
+      <h5 className="font-semibold text-xl">Checkout</h5>
       {cartTotal > 25 && (
         <motion.p
           initial="initial"

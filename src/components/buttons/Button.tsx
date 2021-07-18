@@ -17,7 +17,6 @@ const Button: React.FC<ButtonProps> = ({
 }) => {
   return (
     <button
-      {...props}
       disabled={disabled}
       className={`py-3 px-6 text-white border-none rounded-lg
        font-bold transition-all duration-200 transform flex
@@ -39,6 +38,7 @@ const Button: React.FC<ButtonProps> = ({
             ? "0 0.5rem 1rem rgba(26, 26, 44, 0.25)"
             : "0 0.5rem 1rem rgba(26, 26, 44, 0.1)",
       }}
+      {...props}
     >
       {children}
     </button>
