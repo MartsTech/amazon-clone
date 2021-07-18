@@ -1,22 +1,32 @@
+const defaultTheme = require("tailwindcss/defaultTheme");
+
 module.exports = {
   mode: "jit",
-  purge: [
-    "./src/pages/**/*.{js,ts,jsx,tsx}",
-    "./src/components/**/*.{js,ts,jsx,tsx}",
-  ],
-  darkMode: false,
+  purge: ["./src/**/*.tsx"],
+  darkMode: "class",
   theme: {
     extend: {
-      colors: {
-        amazon_blue: {
-          light: "#232F3E",
-          DEFAULT: "#131921",
-        },
+      screens: {
+        "1xl": "1440px",
       },
+      width: {
+        almost: "calc(100% - 4rem)",
+      },
+      fontFamily: {
+        body: ["Nunito Sans", "sans-serif"],
+      },
+    },
+    screens: {
+      xs: "550px",
+      semi: "880px",
+      ...defaultTheme.screens,
     },
   },
   variants: {
     extend: {},
   },
-  plugins: [require("@tailwindcss/line-clamp")],
+  plugins: [
+    require("tailwind-scrollbar-hide"),
+    require("@tailwindcss/line-clamp"),
+  ],
 };

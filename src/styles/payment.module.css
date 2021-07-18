@@ -1,0 +1,10 @@
+.StripeElement {
+  width: calc(100% - 4rem);
+  position: absolute;
+  bottom: 2rem;
+  left: 2rem;
+}
+
+.StripeElement--webkit-autofill {
+  background-color: rgba(0, 0, 0, 0) !important;
+}

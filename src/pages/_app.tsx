@@ -1,20 +1,24 @@
-import "@style/globals.css";
-import { persistor, store } from "app/store";
+import AppLayout from "components/layouts/AppLayout";
+import DefaultLayout from "components/layouts/DefaultLayout";
 import { Provider as AuthProvider } from "next-auth/client";
 import { AppProps } from "next/app";
-import { Provider } from "react-redux";
-import { PersistGate } from "redux-persist/integration/react";
+import "react-toastify/dist/ReactToastify.min.css";
+import { store, StoreContext } from "stores/store";
+import "styles/globals.css";
+import "styles/product.css";
 
-const MyApp = ({ Component, pageProps }: AppProps) => {
+const App = ({ Component, pageProps }: AppProps) => {
   return (
     <AuthProvider session={pageProps.session}>
-      <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-          <Component {...pageProps} />
-        </PersistGate>
-      </Provider>
+      <StoreContext.Provider value={store}>
+        <DefaultLayout>
+          <AppLayout>
+            <Component {...pageProps} />
+          </AppLayout>
+        </DefaultLayout>
+      </StoreContext.Provider>
     </AuthProvider>
   );
 };
 
-export default MyApp;
+export default App;

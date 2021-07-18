@@ -35,7 +35,8 @@
 ---
 
 ## Demo
-Here is a working live demo [here](https://amazon-clone-martstech.vercel.app/)  
+
+Here is a working live demo [here](https://amazon-clone-martstech.vercel.app/)
 
 ---
 
@@ -86,6 +87,6 @@ Whether you use this project, have learned something from it, or just like it, p
 
 ## License
 
->You can check out the full license [here](https://github.com/MartsTech/amazon-clone/blob/main/LICENSE)
+> You can check out the full license [here](https://github.com/MartsTech/amazon-clone/blob/main/LICENSE)
 
-This project is licensed under the terms of the **MIT** license.
+This project is licensed under the terms of the **MIT** license

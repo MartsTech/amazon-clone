@@ -1,19 +1,23 @@
-import { reqBodyType } from "@type/reqBodyType";
+import { createSessionBody } from "types/payment";
 import { NextApiRequest, NextApiResponse } from "next";
 import { Stripe } from "stripe";
 
 const stripe: Stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
-  const { items, email }: reqBodyType = req.body;
+const createCheckoutSession = async (
+  req: NextApiRequest,
+  res: NextApiResponse
+) => {
+  const { items, userDetails, orderId }: createSessionBody = req.body;
 
   const transformedItems = items.map(
-    ({ product, count }) =>
+    (product) =>
       ({
         description: product.description,
-        quantity: count,
+        quantity: product.quantity,
+        tax_rates: ["txr_1JEapHLMT7c0pt9wFlq27TLB"],
         price_data: {
-          currency: "EUR",
+          currency: "USD",
           unit_amount: product.price * 100,
           product_data: {
             name: product.title,
@@ -25,19 +29,31 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ["card"],
-    shipping_rates: ["shr_1Iu0OHLMT7c0pt9wnZIDpIwo"],
-    shipping_address_collection: {
-      allowed_countries: ["GB", "US", "CA", "BG", "IN"],
+    shipping_rates: ["shr_1JEanGLMT7c0pt9wt1snHAKv"],
+    payment_intent_data: {
+      shipping: {
+        address: {
+          country: userDetails.country,
+          postal_code: userDetails.zip,
+          state: userDetails.state,
+          line1: userDetails.address,
+        },
+        name: userDetails.name,
+        phone: userDetails.phone,
+      },
     },
     line_items: transformedItems,
     mode: "payment",
     success_url: `${process.env.HOST}/success`,
     cancel_url: `${process.env.HOST}/checkout`,
+    customer_email: userDetails.email,
     metadata: {
-      email,
-      images: JSON.stringify(items.map(({ product }) => product.image)),
+      email: userDetails.email,
+      orderId: orderId,
     },
   });
 
   res.status(200).json({ id: session.id });
 };
+
+export default createCheckoutSession;

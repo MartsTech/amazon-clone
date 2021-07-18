@@ -1,39 +1,39 @@
-import ProductFeed from "@section/ProductFeed";
-import HomeTemplate from "@template/HomeTemplate";
-import { productType } from "@type/productType";
+import HomePage from "features/home/HomePage";
+import { observer } from "mobx-react-lite";
 import { GetServerSideProps } from "next";
 import { getSession } from "next-auth/client";
 import Head from "next/head";
+import { useEffect } from "react";
+import { useStore } from "stores/store";
 
-interface HomeProps {
-  products: productType[];
-}
+interface HomeProps {}
 
-const Home: React.FC<HomeProps> = ({ products }) => {
+const Home: React.FC<HomeProps> = () => {
+  const { totalProducts, loadProducts } = useStore().productStore;
+
+  useEffect(() => {
+    if (totalProducts == 0) {
+      loadProducts();
+    }
+  }, [totalProducts, loadProducts]);
+
   return (
     <>
       <Head>
         <title>Amazon Clone</title>
-        <meta name="description" content="Amazon clone created with Next.JS" />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
-      <HomeTemplate ProductFeed={<ProductFeed products={products} />} />
+      <HomePage />
     </>
   );
 };
 
-export default Home;
+export default observer(Home);
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const session = await getSession(context);
 
-  const products = await fetch("https://fakestoreapi.com/products").then(
-    (res) => res.json()
-  );
-
   return {
     props: {
-      products,
       session,
     },
   };

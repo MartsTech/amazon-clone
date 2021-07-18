@@ -9,8 +9,8 @@ declare namespace NodeJS {
     NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID: string;
     FIREBASE_PRIVATE_KEY: string;
     FIREBASE_CLIENT_EMAIL: string;
-    GOOGLE_ID: string;
-    GOOGLE_SECRET: string;
+    GOOGLE_CLIENT_ID: string;
+    GOOGLE_CLIENT_SECRET: string;
     NEXTAUTH_URL: string;
     NEXT_PUBLIC_STRIPE_PUBLIC_KEY: string;
     STRIPE_SECRET_KEY: string;
