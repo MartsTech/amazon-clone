@@ -11,8 +11,8 @@ const register = async (name: string, email: string, password: string) => {
   });
 
   await db.collection("users").doc(email).set({
-    displayName: name,
-    email: email,
+    name,
+    email,
     photoURL: photoURL,
   });
 

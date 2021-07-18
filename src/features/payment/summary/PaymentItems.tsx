@@ -5,7 +5,6 @@ import PaymentItem from "./PaymentItem";
 interface PaymentItemsProps {}
 
 const PaymentItems: React.FC<PaymentItemsProps> = () => {
-  const { deliveryCharges } = useStore().paymentStore;
   const { cart, cartTotal } = useStore().cartStore;
 
   return (
@@ -18,14 +17,9 @@ const PaymentItems: React.FC<PaymentItemsProps> = () => {
           quantity={"x" + quantity}
         />
       ))}
-      {deliveryCharges && (
-        <PaymentItem title={"Delivery Charges"} price={10.0} />
-      )}
+      <PaymentItem title={"Delivery Charges"} price={6.99} />
       <hr className="bg-[#acacad] my-4" />
-      <PaymentItem
-        title={"Total"}
-        price={(cartTotal + (deliveryCharges ? 10 : 0)).toFixed(2)}
-      />
+      <PaymentItem title={"Total"} price={(cartTotal + 6.99).toFixed(2)} />
       <PaymentItem
         title={"Tax"}
         quantity={"+5%"}
@@ -34,11 +28,7 @@ const PaymentItems: React.FC<PaymentItemsProps> = () => {
       <hr className="bg-[#acacad] my-4" />
       <PaymentItem
         title={"Grand Total"}
-        price={(
-          cartTotal +
-          cartTotal * 0.05 +
-          (deliveryCharges ? 10 : 0)
-        ).toFixed(2)}
+        price={(cartTotal + cartTotal * 0.05 + 6.99).toFixed(2)}
         total
       />
     </div>

@@ -8,7 +8,7 @@ import { errorAnimation } from "utils/animations";
 interface PaymentCardProps {}
 
 const PaymentCard: React.FC<PaymentCardProps> = () => {
-  const { processing, succeeded, cardHolder, setCardHolder, handleCardChange } =
+  const { processing, success, cardHolder, setCardHolder, handleCardChange } =
     useStore().paymentStore;
 
   return (
@@ -21,19 +21,17 @@ const PaymentCard: React.FC<PaymentCardProps> = () => {
     >
       <div
         className={`ml-0 m-4 border bg-cover rounded-2xl
-        relative mb-12 ${
-          succeeded && "transition-all duration-500 ease-in-out"
-        }`}
+        relative mb-12 ${success && "transition-all duration-500 ease-in-out"}`}
         style={{
           width: "calc(100% - 2.5rem)",
           paddingBottom: "calc((100% - 2rem) * 0.6)",
           backgroundImage: "url(/images/card.jpg)",
           boxShadow: "0 2rem 2rem -1rem rgba(255, 153, 0, 0.5)",
-          filter: succeeded ? "hue-rotate(80deg)" : "none",
+          filter: success ? "hue-rotate(80deg)" : "none",
         }}
       >
         <input
-          disabled={processing || succeeded}
+          disabled={processing || success}
           value={cardHolder}
           onChange={(e) => setCardHolder(e.target.value)}
           type="text"
