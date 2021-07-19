@@ -1,11 +1,11 @@
-import { ButtonHTMLAttributes, DetailedHTMLProps, useState } from "react";
+import { ButtonHTMLAttributes, DetailedHTMLProps } from "react";
 
 interface ButtonProps
   extends DetailedHTMLProps<
     ButtonHTMLAttributes<HTMLButtonElement>,
     HTMLButtonElement
   > {
-  variant: "primary" | "secondary" | "outlined";
+  variant: "primary" | "secondary" | "outlined" | "red";
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -28,7 +28,11 @@ const Button: React.FC<ButtonProps> = ({
           ? "bg-[#f90] hover:scale-105"
           : variant == "secondary"
           ? "bg-[#1a1a2c]"
-          : "bg-none text-gray-400 font-medium !border-2 !border-solid !border-gray-300"
+          : variant == "outlined"
+          ? "bg-none text-gray-400 font-medium !border-2 !border-solid !border-gray-300"
+          : variant === "red"
+          ? "bg-[#dc143c] text-white border-none h-6 rounded-md ml-2"
+          : "none"
       }`}
       style={{
         boxShadow:

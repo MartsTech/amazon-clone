@@ -19,7 +19,7 @@ const SidebarUser: React.FC<SidebarUserProps> = () => {
         <img
           src={session.user.image || "/images/default.jpg"}
           onClick={() => {
-            router.push("/profile");
+            router.push("/auth/profile");
             toggleSidebar();
           }}
           alt="avatar"
