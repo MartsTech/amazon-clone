@@ -37,9 +37,9 @@ const SelectCountry: React.FC<SelectCountryProps> = ({
       <label
         htmlFor={name}
         className={`absolute left-4 top-4 text-base opacity-75
-          transition-all duration-200 group-focus-within:active_label
-          group-hover:active_label group-active:active_label ${
-            value != "" && "active_label"
+          transition-all duration-200 group-focus-within:active__label
+          group-hover:active__label group-active:active__label ${
+            value != "" && "active__label"
           }`}
       >
         {label}

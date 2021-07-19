@@ -8,15 +8,14 @@
   body {
     @apply !overflow-x-hidden font-body;
   }
-  .active_label {
+  .active__label {
     @apply !left-3 !top-2 !text-sm !opacity-25;
   }
   .underline {
     @apply absolute left-4 w-0 h-px bg-[#1a1a2c] 
     bottom-2 transition-all duration-200;
   }
-  .form_check {
-    @apply w-5 h-5 absolute bg-white border-2 border-solid 
-    border-[#1a1a2c] rounded-md left-4;
+  .profile__label {
+    @apply flex-[20%] mr-8 max-w-[200px] font-bold;
   }
 }

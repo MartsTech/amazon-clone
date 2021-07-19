@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
+import styles from "styles/product.module.css";
 import { Product } from "types/product";
 
 interface ProductImageProps {
@@ -12,8 +13,8 @@ const ProductImage: React.FC<ProductImageProps> = ({
   return (
     <motion.div
       layoutId={id.toString()}
-      className="w-full pb-[75%] relative overflow-hidden 
-      block rounded-t-lg product__image"
+      className={`w-full pb-[75%] relative overflow-hidden 
+      block rounded-t-lg product__image ${styles.productImage}`}
     >
       {discount && (
         <span

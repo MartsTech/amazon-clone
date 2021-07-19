@@ -1,4 +1,4 @@
-.product__image::before {
+.productImage::before {
   content: "View Product";
   position: absolute;
   padding: 0.5rem 1rem;
@@ -14,7 +14,7 @@
   white-space: nowrap;
   transition: all 0.2s;
 }
-.product__image::after {
+.productImage::after {
   content: "";
   position: absolute;
   width: 100%;
@@ -24,10 +24,10 @@
   opacity: 0;
   transition: all 0.2s;
 }
-.product__image:hover::before {
+.productImage:hover::before {
   transform: translate(-50%, -50%);
   opacity: 1;
 }
-.product__image:hover::after {
+.productImage:hover::after {
   opacity: 1;
 }
