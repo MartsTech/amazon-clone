@@ -2,6 +2,7 @@ import { createContext, useContext } from "react";
 import BookmarkStore from "./bookmarkStore";
 import CartStore from "./cartStore";
 import CommonStore from "./commonStore";
+import OrdersStore from "./ordersStore";
 import PaymentStore from "./paymentStore";
 import ProductStore from "./productStore";
 import SearchStore from "./searchStore";
@@ -15,6 +16,7 @@ interface Store {
   bookmarkStore: BookmarkStore;
   paymentStore: PaymentStore;
   userStore: UserStore;
+  ordersStore: OrdersStore;
 }
 
 export const store: Store = {
@@ -25,6 +27,7 @@ export const store: Store = {
   bookmarkStore: new BookmarkStore(),
   paymentStore: new PaymentStore(),
   userStore: new UserStore(),
+  ordersStore: new OrdersStore(),
 };
 
 export const StoreContext = createContext(store);

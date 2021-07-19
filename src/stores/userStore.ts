@@ -3,7 +3,7 @@ import { makeAutoObservable, runInAction } from "mobx";
 import { Product } from "types/product";
 import { UserDetails } from "types/user";
 import { store } from "./store";
-import firebase from "firebase";
+import firebase from "firebase/app";
 import moment from "moment";
 
 class UserStore {

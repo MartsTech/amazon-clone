@@ -9,8 +9,7 @@ import axios from "axios";
 import { db } from "configs/firebase";
 import { makeAutoObservable, runInAction } from "mobx";
 import { store } from "./store";
-import firebase from "firebase";
-import moment from "moment";
+import firebase from "firebase/app";
 
 class PaymentStore {
   stripe: Stripe | null = null;

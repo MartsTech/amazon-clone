@@ -1,10 +1,20 @@
-import Stripe from "stripe";
+import moment from "moment";
+import { Product } from "./product";
 
 export interface Order {
-  id: string;
   amount: number;
-  amount_shipping: number;
-  images: string[];
-  timestamp: number;
-  items: Stripe.LineItem[];
+  created: number;
+  items: Product[];
+  type: "card" | "cash";
+}
+
+export class Order implements Order {
+  constructor(init?: Order) {
+    if (init) {
+      const timestamp = init.created as any;
+      init.created = moment(timestamp.toDate()).unix();
+    }
+
+    Object.assign(this, init);
+  }
 }
