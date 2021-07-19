@@ -17,7 +17,7 @@ const CartCheckout: React.FC<CartCheckoutProps> = () => {
   return (
     <div
       className="bg-white rounded-lg shadow-md items-start p-6 md:p-8
-    flex-[50%]"
+    flex-[50%] mb-12 md:mt-0"
     >
       <h5 className="font-semibold text-xl">Checkout</h5>
       {cartTotal > 25 && (

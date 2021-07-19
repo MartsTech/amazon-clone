@@ -9,7 +9,7 @@ const CartItems: React.FC<CartItemsProps> = () => {
   const { cart } = useStore().cartStore;
 
   return (
-    <div className="flex flex-col mt-12 md:mt-0 flex-[50%]">
+    <div className="flex flex-col flex-[50%]">
       <ReactTooltip
         id="removeTooltip"
         place="right"
