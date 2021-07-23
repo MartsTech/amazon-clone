@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { errorAnimation } from "utils/animations";
-import PaymentButtons from "./PaymentButtons";
 import { useStore } from "stores/store";
 import { useRouter } from "next/router";
 import Button from "components/buttons/Button";
