@@ -48,7 +48,7 @@ const AdminPage: React.FC<AdminPageProps> = () => {
             offer: false,
             error: null,
           }}
-          onSubmit={async (values, { setErrors }) => {}}
+          onSubmit={() => {}}
         >
           {({ handleSubmit, values, setFieldValue, isSubmitting }) => (
             <Form
