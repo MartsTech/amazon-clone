@@ -3,7 +3,7 @@ import { makeAutoObservable, reaction } from "mobx";
 import { Product } from "types/product";
 
 class SearchStore {
-  fuse: Fuse<Product>;
+  fuse: Fuse<Product> = new Fuse([]);
   searchQuery = "";
   results: Fuse.FuseResult<Product>[] = [];
   resultsOpen = false;
