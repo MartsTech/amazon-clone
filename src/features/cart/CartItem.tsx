@@ -1,4 +1,3 @@
-import RemoveShoppingCartRoundedIcon from "@material-ui/icons/RemoveShoppingCartRounded";
 import { motion } from "framer-motion";
 import { Product } from "types/product";
 import { errorAnimation } from "utils/animations";
