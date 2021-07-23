@@ -1,4 +1,3 @@
-import React from "react";
 import { Order as OrderType } from "types/order";
 import OrderAmount from "./OrderAmount";
 import OrderItem from "./OrderItem";

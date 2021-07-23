@@ -1,11 +1,9 @@
 import Button from "components/buttons/Button";
 import FormError from "components/form/FormError";
-import PasswordInput from "components/form/PasswordInput";
 import TextInput from "components/form/TextInput";
 import CenterLayout from "components/layouts/CenterLayout";
 import { auth } from "configs/firebase";
 import { Form, Formik } from "formik";
-import { signIn } from "next-auth/client";
 import { useRouter } from "next/router";
 import { useStore } from "stores/store";
 import * as Yup from "yup";
