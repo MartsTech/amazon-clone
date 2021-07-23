@@ -1,6 +1,5 @@
 import { SvgIconTypeMap } from "@material-ui/core";
 import { OverridableComponent } from "@material-ui/core/OverridableComponent";
-import { observer } from "mobx-react-lite";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useStore } from "stores/store";
