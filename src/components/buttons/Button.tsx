@@ -22,7 +22,7 @@ const Button: React.FC<ButtonProps> = ({
        font-bold transition-all duration-200 transform flex
        items-center justify-center focus:outline-none
        active:scale-95
-    ${disabled && "opacity-50 hover:scale-100"}
+    ${disabled && "opacity-50 hover:scale-100 "}
     ${className} ${
         variant == "primary"
           ? "bg-[#f90] hover:scale-105"
