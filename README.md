@@ -26,11 +26,15 @@
   <a href="#license">License</a>
 </p>
 
-![Template Screenshot](public/images/app.png?raw=true "Template Screenshot")
+![Homepage Screenshot](public/screenshots/home.png?raw=true "Homepage Screenshot")
 
 ---
 
-<img src="https://raw.githubusercontent.com/MartsTech/amazon-clone/main/public/images/stripe.png" alt="Stripe" />
+![Order Screenshot](public/screenshots/order.png?raw=true "Order Screenshot")
+
+---
+
+![Stripe Screenshot](public/screenshots/stripe.png?raw=true "Stripe Screenshot")
 
 ---
 
