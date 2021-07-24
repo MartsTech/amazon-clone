@@ -40,7 +40,9 @@ const CartCheckout: React.FC<CartCheckoutProps> = () => {
       </p>
       <div className="mt-4">
         <Button
-          onClick={() => (session?.user ? router.push("/payment") : "/login")}
+          onClick={() =>
+            session ? router.push("/payment") : router.push("/auth/login")
+          }
           variant="primary"
         >
           Proceed to Payment
