@@ -52,6 +52,9 @@ Here is a working live demo [here](https://amazon-clone-martstech.vercel.app/)
 - Orders Stored in Database using Webhook
 - Persist App State
 - Responsive Design
+- Cart
+- Bookmarks
+- Animations
 
 ---
 
@@ -61,7 +64,7 @@ Here is a working live demo [here](https://amazon-clone-martstech.vercel.app/)
 - Stripe
 - Firebase
 - TailwindCSS
-- Redux
+- Mobx
 - Webhooks
 - NextAuth
 - Fake Store API
