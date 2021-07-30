@@ -7,8 +7,8 @@ import { errorAnimation } from "utils/animations";
 
 interface PaymentSuccessSummaryProps {}
 
-const PaymentSuccessSummary: React.FC<PaymentSuccessSummaryProps> = ({}) => {
-  const { orderId, success } = useStore().paymentStore;
+const PaymentSuccessSummary: React.FC<PaymentSuccessSummaryProps> = () => {
+  const { orderId } = useStore().paymentStore;
   const router = useRouter();
 
   return (

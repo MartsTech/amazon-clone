@@ -31,7 +31,7 @@ const ProviderButtons: React.FC<ProviderButtonsProps> = ({ providers }) => {
               <Image
                 height={24}
                 width={24}
-                src={`/logos/${provider.name}.svg`}
+                src={`/logos/${provider.name}.svg` || "/logos/google.svg"}
                 alt={provider.name}
               />
               <span className="ml-2 !text-[rgba(26, 26, 44, 0.5)]">
