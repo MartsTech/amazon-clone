@@ -9,7 +9,7 @@ class Document extends NextDocument {
             name="description"
             content="Amazon Clone created using React.JS"
           />
-          <link rel="icon" href="/icons/favicon.png" />
+          <link rel="icon" href="/icons/favicon.ico" />
         </Head>
         <body>
           <Main />
