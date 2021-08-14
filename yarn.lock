@@ -3684,10 +3684,10 @@ natural-compare@^1.4.0:
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
   integrity sha1-Sr6/7tdUHywnrPspvbvRXI1bpPc=
 
-next-auth@^3.27.3:
-  version "3.27.3"
-  resolved "https://registry.yarnpkg.com/next-auth/-/next-auth-3.27.3.tgz#b155cfe07675378d35fd0018a8cef16aee68ff0a"
-  integrity sha512-U7LRrSc3ZBUKQcOpqJfVui80jPpx0MQAmtCPI7dJ9DjDg8AfxRBzk59oNCE5MLlbMDb83gEtOu+Mr5hi28qmCg==
+next-auth@^3.28.0:
+  version "3.28.0"
+  resolved "https://registry.yarnpkg.com/next-auth/-/next-auth-3.28.0.tgz#fe516bc82670738eb6c68d71fde32566e24bddbb"
+  integrity sha512-k79s1DRmExG+pLQaMkEazMe6MOR8IG1NMgFVGZoJ82bVuasU8oTlLWhGaU6zOY3BiH3WQYs1jl1wj0mg+sfFIw==
   dependencies:
     "@babel/runtime" "^7.14.0"
     "@next-auth/prisma-legacy-adapter" "0.0.1-canary.127"
