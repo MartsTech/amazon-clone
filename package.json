@@ -19,7 +19,7 @@
     "@stripe/stripe-js": "^1.16.0",
     "@tailwindcss/line-clamp": "^0.2.1",
     "axios": "^0.21.1",
-    "firebase": "^8.7.1",
+    "firebase": "^8.9.1",
     "firebase-admin": "^9.10.0",
     "formik": "^2.2.9",
     "framer-motion": "^4.1.17",
