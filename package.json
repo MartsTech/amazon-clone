@@ -20,7 +20,7 @@
     "@tailwindcss/line-clamp": "^0.2.1",
     "axios": "^0.21.1",
     "firebase": "^8.9.1",
-    "firebase-admin": "^9.10.0",
+    "firebase-admin": "^9.11.1",
     "formik": "^2.2.9",
     "framer-motion": "^4.1.17",
     "fuse.js": "^6.4.6",
