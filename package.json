@@ -37,7 +37,7 @@
     "react-toastify": "^8.0.1",
     "react-tooltip": "^4.2.21",
     "react-top-loading-bar": "^2.0.1",
-    "stripe": "^8.170.0",
+    "stripe": "^8.171.0",
     "tailwind-scrollbar-hide": "^1.0.3",
     "yup": "^0.32.9"
   },
