@@ -39,7 +39,7 @@
     "react-top-loading-bar": "^2.0.1",
     "stripe": "^8.179.0",
     "tailwind-scrollbar-hide": "^1.0.3",
-    "yup": "^0.32.9"
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@types/micro": "^7.3.6",
