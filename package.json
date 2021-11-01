@@ -47,7 +47,7 @@
     "@types/react-currency-formatter": "^1.1.4",
     "autoprefixer": "^10.3.7",
     "eslint": "7.32.0",
-    "eslint-config-next": "11.1.2",
+    "eslint-config-next": "12.0.2",
     "gen-env-types": "^1.3.0",
     "postcss": "^8.3.11",
     "tailwindcss": "^2.2.17",
