@@ -38,7 +38,7 @@
     "react-tooltip": "^4.2.21",
     "react-top-loading-bar": "^2.0.1",
     "stripe": "^8.184.0",
-    "tailwind-scrollbar-hide": "^1.0.3",
+    "tailwind-scrollbar-hide": "^1.1.5",
     "yup": "^0.32.11"
   },
   "devDependencies": {
