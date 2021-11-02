@@ -1,14 +1,13 @@
 import { useSession } from "next-auth/client";
-import { FC } from "react";
 
 interface WelcomeHeaderProps {}
 
-const WelcomeHeader: FC<WelcomeHeaderProps> = () => {
+const WelcomeHeader: React.FC<WelcomeHeaderProps> = () => {
   const [session] = useSession();
 
   return (
     <div className="flex self-start items-center">
-      {/* eslint-disable-next-line @next/next/no-img-element */}
+      {/* eslint-disable-next-line @next/next/no-img-element*/}
       <img
         className="h-20 rounded-full mr-6 shadow-sm"
         src={session?.user?.image || "/images/default.jpg"}

@@ -1,9 +1,9 @@
 import { useRouter } from "next/router";
-import { FC, useEffect } from "react";
+import { useEffect } from "react";
 
 interface ScrollToTopProps {}
 
-const ScrollToTop: FC<ScrollToTopProps> = () => {
+const ScrollToTop: React.FC<ScrollToTopProps> = () => {
   const { pathname } = useRouter();
 
   useEffect(() => {

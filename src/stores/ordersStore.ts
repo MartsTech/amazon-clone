@@ -15,17 +15,18 @@ class OrdersStore {
     return Array.from(this.ordersRegistery.values());
   }
 
-  loadOrders = async (email: string) => {
+  loadOrders = (email: string) => {
     store.commonStore.setAppLoading(true);
 
-    const userRef = doc(db, "users", email);
-
-    const ordersSnap = await getDocs(
-      query(collection(userRef, "orders"), orderBy("created", "desc"))
-    );
-
-    ordersSnap.docs.forEach((orderDoc, index) => {
-      this.setOrder(orderDoc.data(), index);
+    getDocs(
+      query(
+        collection(doc(db, "users", email), "orders"),
+        orderBy("created", "desc")
+      )
+    ).then((res) => {
+      res.docs.forEach((doc, index) => {
+        this.setOrder(doc.data(), index);
+      });
     });
 
     store.commonStore.setAppLoading(false);

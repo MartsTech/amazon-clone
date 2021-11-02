@@ -1,6 +1,5 @@
 import FormCheck from "components/form/FormCheck";
 import { observer } from "mobx-react-lite";
-import { FC } from "react";
 import { useStore } from "stores/store";
 import PaymentCard from "./PaymentCard";
 import PaymentError from "./PaymentError";
@@ -8,7 +7,7 @@ import PaymentShippingDetails from "./PaymentShippingDetails";
 
 interface PaymentMethodProps {}
 
-const PaymentMethod: FC<PaymentMethodProps> = () => {
+const PaymentMethod: React.FC<PaymentMethodProps> = () => {
   const { paymentMethod, setPaymentMethod, error } = useStore().paymentStore;
 
   return (

@@ -1,6 +1,5 @@
 import { observer } from "mobx-react-lite";
 import { useRouter } from "next/router";
-import { FC } from "react";
 import { useStore } from "stores/store";
 import { Product } from "types/product";
 import CartItemButtons from "./CartItemButtons";
@@ -9,7 +8,7 @@ interface CartItemDetailsProps {
   item: Product;
 }
 
-const CartItemDetails: FC<CartItemDetailsProps> = ({ item }) => {
+const CartItemDetails: React.FC<CartItemDetailsProps> = ({ item }) => {
   const { loadProduct } = useStore().productStore;
   const router = useRouter();
 
@@ -33,7 +32,7 @@ const CartItemDetails: FC<CartItemDetailsProps> = ({ item }) => {
           </b>
           {discount && (
             <del className="text-[#dc143c] text-sm">
-              ${`${((price + price * 0.25) * quantity).toFixed()}.99`}
+              ${((price + price * 0.25) * quantity).toFixed() + ".99"}
             </del>
           )}
         </div>

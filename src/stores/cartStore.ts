@@ -36,8 +36,7 @@ class CartStore {
           (amount, product) => product.price * product.quantity + amount,
           0
         )
-        .toFixed(2),
-      10
+        .toFixed(2)
     );
   }
 

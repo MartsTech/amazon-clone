@@ -1,11 +1,10 @@
 import Button from "components/buttons/Button";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { FC } from "react";
 
 interface BookmarkEmptyProps {}
 
-const BookmarkEmpty: FC<BookmarkEmptyProps> = () => {
+const BookmarkEmpty: React.FC<BookmarkEmptyProps> = () => {
   const router = useRouter();
 
   return (

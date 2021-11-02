@@ -2,13 +2,12 @@ import Button from "components/buttons/Button";
 import { motion } from "framer-motion";
 import { observer } from "mobx-react-lite";
 import { useRouter } from "next/router";
-import { FC } from "react";
 import { useStore } from "stores/store";
 import { errorAnimation } from "utils/animations";
 
 interface PaymentSuccessSummaryProps {}
 
-const PaymentSuccessSummary: FC<PaymentSuccessSummaryProps> = () => {
+const PaymentSuccessSummary: React.FC<PaymentSuccessSummaryProps> = () => {
   const { orderId } = useStore().paymentStore;
   const router = useRouter();
 
@@ -32,7 +31,7 @@ const PaymentSuccessSummary: FC<PaymentSuccessSummaryProps> = () => {
       <Button
         onClick={() => router.replace("/orders")}
         variant="primary"
-        className="mt-8 w-full uppercase"
+        className={`mt-8 w-full uppercase`}
       >
         My Orders
       </Button>

@@ -1,14 +1,13 @@
+import { doc, setDoc } from "@firebase/firestore";
 import Button from "components/buttons/Button";
 import FormCheck from "components/form/FormCheck";
 import SelectCountry from "components/form/SelectCountry";
 import TextInput from "components/form/TextInput";
 import { db } from "configs/firebase";
-import { doc, setDoc } from "firebase/firestore";
 import { Form, Formik } from "formik";
 import { motion } from "framer-motion";
 import { useSession } from "next-auth/client";
 import { useRouter } from "next/router";
-import { FC } from "react";
 import { useStore } from "stores/store";
 import { pageSlide, pageTransition } from "utils/animations";
 import * as Yup from "yup";
@@ -16,7 +15,7 @@ import WelcomeHeader from "./WelcomeHeader";
 
 interface WelcomePageProps {}
 
-const WelcomePage: FC<WelcomePageProps> = () => {
+const WelcomePage: React.FC<WelcomePageProps> = () => {
   const { setAppLoading } = useStore().commonStore;
   const [session] = useSession();
   const router = useRouter();

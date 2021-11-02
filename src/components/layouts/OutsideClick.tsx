@@ -1,11 +1,15 @@
-import { FC, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 
 interface OutsideClickProps {
   opened: boolean;
   onClose: () => void;
 }
 
-const OutsideClick: FC<OutsideClickProps> = ({ opened, onClose, children }) => {
+const OutsideClick: React.FC<OutsideClickProps> = ({
+  opened,
+  onClose,
+  children,
+}) => {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

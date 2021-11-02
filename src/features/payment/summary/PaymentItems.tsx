@@ -1,11 +1,10 @@
 import { observer } from "mobx-react-lite";
-import { FC } from "react";
 import { useStore } from "stores/store";
 import PaymentItem from "./PaymentItem";
 
 interface PaymentItemsProps {}
 
-const PaymentItems: FC<PaymentItemsProps> = () => {
+const PaymentItems: React.FC<PaymentItemsProps> = () => {
   const { cart, cartTotal } = useStore().cartStore;
 
   return (
@@ -15,20 +14,20 @@ const PaymentItems: FC<PaymentItemsProps> = () => {
           key={id}
           title={title}
           price={(price * quantity).toFixed(2)}
-          quantity={`x${quantity}`}
+          quantity={"x" + quantity}
         />
       ))}
-      <PaymentItem title="Delivery Charges" price={6.99} />
+      <PaymentItem title={"Delivery Charges"} price={6.99} />
       <hr className="bg-[#acacad] my-4" />
-      <PaymentItem title="Total" price={(cartTotal + 6.99).toFixed(2)} />
+      <PaymentItem title={"Total"} price={(cartTotal + 6.99).toFixed(2)} />
       <PaymentItem
-        title="Tax"
-        quantity="+5%"
+        title={"Tax"}
+        quantity={"+5%"}
         price={(cartTotal * 0.05).toFixed(2)}
       />
       <hr className="bg-[#acacad] my-4" />
       <PaymentItem
-        title="Grand Total"
+        title={"Grand Total"}
         price={(cartTotal + cartTotal * 0.05 + 6.99).toFixed(2)}
         total
       />

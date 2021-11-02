@@ -1,15 +1,14 @@
 import Button from "components/buttons/Button";
 import { signOut, useSession } from "next-auth/client";
-import { FC } from "react";
 
 interface ProfileHeaderProps {}
 
-const ProfileHeader: FC<ProfileHeaderProps> = () => {
+const ProfileHeader: React.FC<ProfileHeaderProps> = () => {
   const [session] = useSession();
 
   return (
     <div className="flex self-start items-center">
-      {/* eslint-disable-next-line @next/next/no-img-element */}
+      {/* eslint-disable-next-line @next/next/no-img-element*/}
       <img
         src={session?.user?.image || "images/default.jpg"}
         alt="avatar"

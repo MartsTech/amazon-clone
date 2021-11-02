@@ -1,10 +1,10 @@
 import { useSession } from "next-auth/client";
 import { useRouter } from "next/router";
-import { FC, useEffect } from "react";
+import { useEffect } from "react";
 
 interface IsNotAuthProps {}
 
-const IsNotAuth: FC<IsNotAuthProps> = ({ children }) => {
+const IsNotAuth: React.FC<IsNotAuthProps> = ({ children }) => {
   const [session, loading] = useSession();
   const router = useRouter();
 

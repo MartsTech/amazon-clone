@@ -1,14 +1,13 @@
 import { CardElement } from "@stripe/react-stripe-js";
 import { motion } from "framer-motion";
 import { observer } from "mobx-react-lite";
-import { FC } from "react";
 import { useStore } from "stores/store";
 import styles from "styles/payment.module.css";
 import { errorAnimation } from "utils/animations";
 
 interface PaymentCardProps {}
 
-const PaymentCard: FC<PaymentCardProps> = () => {
+const PaymentCard: React.FC<PaymentCardProps> = () => {
   const { processing, success, cardHolder, setCardHolder, handleCardChange } =
     useStore().paymentStore;
 
@@ -43,7 +42,7 @@ const PaymentCard: FC<PaymentCardProps> = () => {
           style={{
             width: "calc(100% - 4rem)",
             textShadow:
-              cardHolder !== "" ? "1px 1px 2px rgba(26, 26, 44, 0.25)" : "none",
+              cardHolder != "" ? "1px 1px 2px rgba(26, 26, 44, 0.25)" : "none",
           }}
         />
         <CardElement

@@ -1,11 +1,10 @@
 import { observer } from "mobx-react-lite";
-import { FC } from "react";
 import { useStore } from "stores/store";
 import Product from "./Product";
 
 interface ProductFeedProps {}
 
-const ProductFeed: FC<ProductFeedProps> = () => {
+const ProductFeed: React.FC<ProductFeedProps> = () => {
   const { products, activeCategory } = useStore().productStore;
 
   return (

@@ -4,13 +4,12 @@ import TextInput from "components/form/TextInput";
 import CartItems from "features/cart/CartItems";
 import { Form, Formik } from "formik";
 import { motion } from "framer-motion";
-import { FC } from "react";
 import { pageSlide, pageTransition } from "utils/animations";
 import * as Yup from "yup";
 
 interface AdminPageProps {}
 
-const AdminPage: FC<AdminPageProps> = () => {
+const AdminPage: React.FC<AdminPageProps> = () => {
   const validationSchema = Yup.object({
     title: Yup.string().required("Name is required"),
     category: Yup.string().required("Category is required"),

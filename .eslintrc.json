@@ -5,7 +5,7 @@
   },
   "extends": [
     "plugin:react/recommended",
-    "airbnb",
+    "google",
     "prettier",
     "plugin:@next/next/recommended"
   ],
@@ -14,30 +14,17 @@
     "ecmaFeatures": {
       "jsx": true
     },
-    "ecmaVersion": 13,
+    "ecmaVersion": 12,
     "sourceType": "module"
   },
   "plugins": ["react", "@typescript-eslint"],
   "rules": {
+    "require-jsdoc": "off",
     "react/react-in-jsx-scope": "off",
     "react/prop-types": "off",
-    "react/jsx-props-no-spreading": "off",
-    "react/no-array-index-key": "off",
-    "react/require-default-props": "off",
-    "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
-    "require-jsdoc": "off",
-    "import/no-unresolved": "off",
-    "import/extensions": "off",
-    "lines-between-class-members": "off",
     "no-unused-vars": "off",
-    "no-param-reassign": "off",
-    "no-redeclare": "off",
-    "no-nested-ternary": "off",
-    "jsx-a11y/no-static-element-interactions": "off",
-    "jsx-a11y/click-events-have-key-events": "off",
-    "jsx-a11y/no-noninteractive-element-interactions": "off",
-    "import/no-extraneous-dependencies": "off",
-    "global-require": "off"
+    "no-invalid-this": "off",
+    "new-cap": "off"
   },
   "settings": {
     "react": {

@@ -1,10 +1,10 @@
-import { auth, db } from "configs/firebase";
 import {
   createUserWithEmailAndPassword,
   sendEmailVerification,
   updateProfile,
-} from "firebase/auth";
-import { doc, setDoc } from "firebase/firestore";
+} from "@firebase/auth";
+import { doc, setDoc } from "@firebase/firestore";
+import { auth, db } from "configs/firebase";
 
 const register = async (name: string, email: string, password: string) => {
   const res = await createUserWithEmailAndPassword(auth, email, password);
@@ -12,7 +12,7 @@ const register = async (name: string, email: string, password: string) => {
   const photoURL = `https://i.pravatar.cc/150?u=${email}`;
 
   if (!auth.currentUser) {
-    throw new Error("Problem occurred");
+    return;
   }
 
   updateProfile(auth.currentUser, {
@@ -38,7 +38,7 @@ const register = async (name: string, email: string, password: string) => {
     name: res.user?.displayName,
     email: res.user?.email,
     image: res.user?.photoURL,
-  };
+  } as any;
 };
 
 export default register;

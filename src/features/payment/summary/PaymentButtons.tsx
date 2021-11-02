@@ -1,11 +1,10 @@
 import Button from "components/buttons/Button";
 import { observer } from "mobx-react-lite";
-import { FC } from "react";
 import { useStore } from "stores/store";
 
 interface PaymentButtonsProps {}
 
-const PaymentButtons: FC<PaymentButtonsProps> = () => {
+const PaymentButtons: React.FC<PaymentButtonsProps> = () => {
   const {
     paymentMethod,
     disabled,
@@ -27,9 +26,9 @@ const PaymentButtons: FC<PaymentButtonsProps> = () => {
         }
         variant="primary"
         className="!transform-none uppercase"
-        onClick={async (e) => {
+        onClick={(e) => {
           e.preventDefault();
-          await checkout();
+          checkout();
         }}
       >
         {processing
@@ -49,7 +48,7 @@ const PaymentButtons: FC<PaymentButtonsProps> = () => {
         style={{ boxShadow: "0 0.5rem 1rem rgba(99, 91, 255, 0.15)" }}
       >
         <span>Pay via</span>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
+        {/* eslint-disable-next-line @next/next/no-img-element*/}
         <img src="/logos/stripe.svg" alt="Stripe" className="h-6" />
       </Button>
     </div>

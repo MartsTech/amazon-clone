@@ -1,18 +1,17 @@
+import { sendPasswordResetEmail } from "@firebase/auth";
 import Button from "components/buttons/Button";
 import FormError from "components/form/FormError";
 import TextInput from "components/form/TextInput";
 import CenterLayout from "components/layouts/CenterLayout";
 import { auth } from "configs/firebase";
-import { sendPasswordResetEmail } from "firebase/auth";
 import { Form, Formik } from "formik";
 import { useRouter } from "next/router";
-import { FC } from "react";
 import { useStore } from "stores/store";
 import * as Yup from "yup";
 
 interface PasswordResetPageProps {}
 
-const PasswordResetPage: FC<PasswordResetPageProps> = () => {
+const PasswordResetPage: React.FC<PasswordResetPageProps> = () => {
   const { setAppLoading } = useStore().commonStore;
   const router = useRouter();
 

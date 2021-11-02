@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { observer } from "mobx-react-lite";
-import { FC } from "react";
+import React from "react";
 import { useStore } from "stores/store";
 import { pageTransition, pageZoom } from "utils/animations";
 import CartCheckout from "./CartCheckout";
@@ -9,7 +9,7 @@ import CartItems from "./CartItems";
 
 interface CartPageProps {}
 
-const CartPage: FC<CartPageProps> = () => {
+const CartPage: React.FC<CartPageProps> = () => {
   const { cartTotalItems } = useStore().cartStore;
 
   return (

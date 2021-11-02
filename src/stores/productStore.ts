@@ -1,7 +1,7 @@
 import agent from "configs/agent";
 import { makeAutoObservable, runInAction } from "mobx";
 import { Product } from "types/product";
-import shuffleArray from "utils/array";
+import { shuffleArray } from "utils/array";
 import { store } from "./store";
 
 class ProductStore {
@@ -29,7 +29,7 @@ class ProductStore {
     const products = shuffleArray(await agent.Products.list());
 
     runInAction(() => {
-      products.forEach((product: any) => {
+      products.forEach((product) => {
         this.setProduct(product);
       });
     });

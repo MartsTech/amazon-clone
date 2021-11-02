@@ -1,11 +1,10 @@
 import Button from "components/buttons/Button";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { FC } from "react";
 
 interface CartEmptyProps {}
 
-const CartEmpty: FC<CartEmptyProps> = () => {
+const CartEmpty: React.FC<CartEmptyProps> = () => {
   const router = useRouter();
 
   return (

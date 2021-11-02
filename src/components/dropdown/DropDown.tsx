@@ -1,7 +1,7 @@
 import KeyboardArrowDownRoundedIcon from "@material-ui/icons/KeyboardArrowDownRounded";
 import OutsideClick from "components/layouts/OutsideClick";
 import { motion } from "framer-motion";
-import { FC, useState } from "react";
+import { useState } from "react";
 import DropDownItem from "./DropDownItem";
 
 interface DropDownProps {
@@ -11,7 +11,7 @@ interface DropDownProps {
   defaultItem: string;
 }
 
-const DropDown: FC<DropDownProps> = ({
+const DropDown: React.FC<DropDownProps> = ({
   className,
   menu,
   items,
@@ -29,7 +29,7 @@ const DropDown: FC<DropDownProps> = ({
         onClick={(e) => {
           e.preventDefault();
           e.stopPropagation();
-          setActive((isActive) => !isActive);
+          setActive((active) => !active);
         }}
       >
         {selected}

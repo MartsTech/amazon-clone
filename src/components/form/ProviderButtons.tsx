@@ -1,14 +1,13 @@
 import Button from "components/buttons/Button";
 import { ClientSafeProvider, signIn } from "next-auth/client";
 import Image from "next/image";
-import { FC } from "react";
 import { useStore } from "stores/store";
 
 interface ProviderButtonsProps {
   providers: Record<string, ClientSafeProvider>;
 }
 
-const ProviderButtons: FC<ProviderButtonsProps> = ({ providers }) => {
+const ProviderButtons: React.FC<ProviderButtonsProps> = ({ providers }) => {
   const { setAppLoading } = useStore().commonStore;
 
   return (

@@ -1,4 +1,3 @@
-import { FC } from "react";
 import styles from "styles/form.module.css";
 
 interface FormCheckProps {
@@ -9,19 +8,21 @@ interface FormCheckProps {
   onClick: () => void;
 }
 
-const FormCheck: FC<FormCheckProps> = ({
+const FormCheck: React.FC<FormCheckProps> = ({
   name,
   label,
   type,
   value,
   onClick,
-}) => (
-  <div className={`relative mt-4 flex ${styles.check}`} onClick={onClick}>
-    <input type={type} name={name} checked={value} readOnly />
-    <label className="text-base" htmlFor={name}>
-      {label}
-    </label>
-  </div>
-);
+}) => {
+  return (
+    <div className={`relative mt-4 flex ${styles.check}`} onClick={onClick}>
+      <input type={type} name={name} checked={value} readOnly />
+      <label className="text-base" htmlFor={name}>
+        {label}
+      </label>
+    </div>
+  );
+};
 
 export default FormCheck;

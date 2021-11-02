@@ -3,18 +3,19 @@ import PasswordResetPage from "features/user/PasswordResetPage";
 import { GetServerSideProps } from "next";
 import { getSession } from "next-auth/client";
 import Head from "next/head";
-import { FC } from "react";
 
 interface PasswordResetProps {}
 
-const PasswordReset: FC<PasswordResetProps> = () => (
-  <IsNotAuth>
-    <Head>
-      <title>Password Reset</title>
-    </Head>
-    <PasswordResetPage />
-  </IsNotAuth>
-);
+const PasswordReset: React.FC<PasswordResetProps> = () => {
+  return (
+    <IsNotAuth>
+      <Head>
+        <title>Password Reset</title>
+      </Head>
+      <PasswordResetPage />
+    </IsNotAuth>
+  );
+};
 
 export default PasswordReset;
 

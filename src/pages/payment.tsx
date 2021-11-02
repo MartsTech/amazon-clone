@@ -6,13 +6,13 @@ import { observer } from "mobx-react-lite";
 import { GetServerSideProps } from "next";
 import { getSession, useSession } from "next-auth/client";
 import Head from "next/head";
-import { FC, useEffect } from "react";
+import { useEffect } from "react";
 import { useStore } from "stores/store";
 import { elFonts } from "utils/data";
 
 interface PaymentProps {}
 
-const Payment: FC<PaymentProps> = () => {
+const Payment: React.FC<PaymentProps> = () => {
   const { userDetails, loadUserDetails } = useStore().userStore;
   const { cartTotal } = useStore().cartStore;
   const { createNewPayment } = useStore().paymentStore;

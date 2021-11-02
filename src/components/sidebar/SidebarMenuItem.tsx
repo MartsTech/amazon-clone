@@ -2,7 +2,6 @@ import { SvgIconTypeMap } from "@material-ui/core";
 import { OverridableComponent } from "@material-ui/core/OverridableComponent";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { FC } from "react";
 import { useStore } from "stores/store";
 
 interface SidebarMenuItemProps {
@@ -12,7 +11,7 @@ interface SidebarMenuItemProps {
   count?: number;
 }
 
-const SidebarMenuItem: FC<SidebarMenuItemProps> = ({
+const SidebarMenuItem: React.FC<SidebarMenuItemProps> = ({
   Icon,
   paths,
   tooltip,
@@ -39,7 +38,7 @@ const SidebarMenuItem: FC<SidebarMenuItemProps> = ({
               : "!fill-[transparent] stroke-1 stroke-[#1a1a2c]"
           }`}
         />
-        {typeof count !== "undefined" && (
+        {typeof count != "undefined" && (
           <span
             suppressHydrationWarning
             className="absolute pt-[0.15rem] text-xs text-center

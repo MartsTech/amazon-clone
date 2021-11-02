@@ -1,13 +1,12 @@
 import { motion } from "framer-motion";
 import { observer } from "mobx-react-lite";
-import { FC } from "react";
 import { useStore } from "stores/store";
 import { pageSlide, pageTransition } from "utils/animations";
 import Order from "./Order";
 
 interface OrdersPageProps {}
 
-const OrdersPage: FC<OrdersPageProps> = () => {
+const OrdersPage: React.FC<OrdersPageProps> = () => {
   const { orders } = useStore().ordersStore;
 
   return (

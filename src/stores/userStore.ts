@@ -1,5 +1,5 @@
+import { doc, onSnapshot, setDoc, Timestamp } from "@firebase/firestore";
 import { db } from "configs/firebase";
-import { doc, onSnapshot, setDoc, Timestamp } from "firebase/firestore";
 import { makeAutoObservable, runInAction } from "mobx";
 import moment from "moment";
 import { Product } from "types/product";
@@ -37,9 +37,7 @@ class UserStore {
       return;
     }
 
-    const userRef = doc(db, "users", this.userDetails.email);
-
-    setDoc(doc(userRef, "orders", orderId), {
+    setDoc(doc(doc(db, "users", this.userDetails.email), "orders", orderId), {
       created: Timestamp.fromDate(moment.unix(created).toDate()),
       amount,
       items,

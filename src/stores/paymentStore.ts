@@ -1,3 +1,4 @@
+import { addDoc, collection, doc, serverTimestamp } from "@firebase/firestore";
 import { CardElement } from "@stripe/react-stripe-js";
 import {
   Stripe,
@@ -7,7 +8,6 @@ import {
 } from "@stripe/stripe-js";
 import axios from "axios";
 import { db } from "configs/firebase";
-import { addDoc, collection, doc, serverTimestamp } from "firebase/firestore";
 import { makeAutoObservable, runInAction } from "mobx";
 import { store } from "./store";
 
@@ -65,7 +65,7 @@ class PaymentStore {
       return;
     }
 
-    const { userDetails } = store.userStore;
+    const userDetails = store.userStore.userDetails;
 
     if (!userDetails) {
       this.error = "Please update your shipping details";
@@ -107,7 +107,7 @@ class PaymentStore {
     store.commonStore.setAppLoading(false);
   };
 
-  checkout = async () => {
+  checkout = () => {
     if (store.cartStore.cart.length === 0) {
       this.error = "Your cart is empty! Please select items to purchase.";
       return;
@@ -116,7 +116,7 @@ class PaymentStore {
     if (this.paymentMethod === "card") {
       this.checkoutCard();
     } else {
-      await this.checkoutCash();
+      this.checkoutCash();
     }
   };
 
@@ -126,7 +126,7 @@ class PaymentStore {
       return;
     }
 
-    const { userDetails } = store.userStore;
+    const userDetails = store.userStore.userDetails;
 
     if (!userDetails) {
       this.error = "Please update your shipping details";
@@ -194,17 +194,15 @@ class PaymentStore {
     store.commonStore.setAppLoading(false);
   };
 
-  private checkoutCash = async () => {
-    const { userDetails } = store.userStore;
+  private checkoutCash = () => {
+    const userDetails = store.userStore.userDetails;
 
     if (!userDetails) {
       this.error = "Please update your shipping details";
       return;
     }
 
-    const userRef = doc(db, "users", userDetails.email);
-
-    await addDoc(collection(userRef, "orders"), {
+    addDoc(collection(doc(db, "users", userDetails.email), "orders"), {
       created: serverTimestamp(),
       amount: (
         store.cartStore.cartTotal +
@@ -213,17 +211,17 @@ class PaymentStore {
       ).toFixed(2),
       items: store.cartStore.cart,
       type: "cash",
-    });
+    }).then(() => {
+      runInAction(() => {
+        this.success = true;
+        this.error = null;
+        this.disabled = false;
+      });
 
-    runInAction(() => {
-      this.success = true;
-      this.error = null;
-      this.disabled = false;
+      setTimeout(() => {
+        store.cartStore.clearCart();
+      }, 2000);
     });
-
-    setTimeout(() => {
-      store.cartStore.clearCart();
-    }, 2000);
 
     this.processing = false;
     store.commonStore.setAppLoading(false);

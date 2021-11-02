@@ -1,12 +1,11 @@
 import { observer } from "mobx-react-lite";
-import { FC } from "react";
 import { useStore } from "stores/store";
 import ProductButtons from "./ProductButtons";
 import ProductPrice from "./ProductPrice";
 
 interface ProductDetailsProps {}
 
-const ProductDetails: FC<ProductDetailsProps> = () => {
+const ProductDetails: React.FC<ProductDetailsProps> = () => {
   const { selectedProduct } = useStore().productStore;
 
   if (typeof selectedProduct === "undefined") {

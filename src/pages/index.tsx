@@ -3,16 +3,16 @@ import { observer } from "mobx-react-lite";
 import { GetServerSideProps } from "next";
 import { getSession } from "next-auth/client";
 import Head from "next/head";
-import { FC, useEffect } from "react";
+import { useEffect } from "react";
 import { useStore } from "stores/store";
 
 interface HomeProps {}
 
-const Home: FC<HomeProps> = () => {
+const Home: React.FC<HomeProps> = () => {
   const { totalProducts, loadProducts } = useStore().productStore;
 
   useEffect(() => {
-    if (totalProducts === 0) {
+    if (totalProducts == 0) {
       loadProducts();
     }
   }, [totalProducts, loadProducts]);

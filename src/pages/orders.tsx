@@ -4,12 +4,12 @@ import { observer } from "mobx-react-lite";
 import { GetServerSideProps } from "next";
 import { getSession, useSession } from "next-auth/client";
 import Head from "next/head";
-import { FC, useEffect } from "react";
+import { useEffect } from "react";
 import { useStore } from "stores/store";
 
 interface OrdersProps {}
 
-const Orders: FC<OrdersProps> = () => {
+const Orders: React.FC<OrdersProps> = () => {
   const { orders, loadOrders } = useStore().ordersStore;
   const [session] = useSession();
 

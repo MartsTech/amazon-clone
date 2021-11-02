@@ -1,18 +1,18 @@
 import { observer } from "mobx-react-lite";
-import { FC, useEffect } from "react";
+import { useEffect } from "react";
 import { useStore } from "stores/store";
-import shuffleArray from "utils/array";
-import useGetIntId from "utils/useGetIntId";
+import { shuffleArray } from "utils/array";
+import { useGetIntId } from "utils/useGetIntId";
 import Product from "../feed/Product";
 
 interface ProductSuggestionsProps {}
 
-const ProductSuggestions: FC<ProductSuggestionsProps> = () => {
+const ProductSuggestions: React.FC<ProductSuggestionsProps> = () => {
   const { products, loadProducts } = useStore().productStore;
   const id = useGetIntId();
 
   useEffect(() => {
-    if (products.length === 0) {
+    if (products.length == 0) {
       loadProducts();
     }
   }, [products, loadProducts]);
@@ -27,7 +27,7 @@ const ProductSuggestions: FC<ProductSuggestionsProps> = () => {
         {shuffleArray(products)
           ?.slice(0, 3)
           .map((product) =>
-            product.id !== id ? (
+            product.id != id ? (
               <Product key={product.id} product={product} />
             ) : null
           )}
