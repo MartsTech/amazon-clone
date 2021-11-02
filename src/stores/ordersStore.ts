@@ -1,4 +1,5 @@
 import { db } from "configs/firebase";
+import { collection, doc, getDocs, orderBy, query } from "firebase/firestore";
 import { makeAutoObservable } from "mobx";
 import { Order } from "types/order";
 import { store } from "./store";
@@ -14,19 +15,18 @@ class OrdersStore {
     return Array.from(this.ordersRegistery.values());
   }
 
-  loadOrders = (email: string) => {
+  loadOrders = async (email: string) => {
     store.commonStore.setAppLoading(true);
 
-    db.collection("users")
-      .doc(email)
-      .collection("orders")
-      .orderBy("created", "desc")
-      .get()
-      .then((res) => {
-        res.docs.forEach((doc, index) => {
-          this.setOrder(doc.data(), index);
-        });
-      });
+    const userRef = doc(db, "users", email);
+
+    const ordersSnap = await getDocs(
+      query(collection(userRef, "orders"), orderBy("created", "desc"))
+    );
+
+    ordersSnap.docs.forEach((orderDoc, index) => {
+      this.setOrder(orderDoc.data(), index);
+    });
 
     store.commonStore.setAppLoading(false);
   };

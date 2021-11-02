@@ -3,19 +3,19 @@ import { observer } from "mobx-react-lite";
 import { GetServerSideProps } from "next";
 import { getSession } from "next-auth/client";
 import Head from "next/head";
-import { useEffect } from "react";
+import { FC, useEffect } from "react";
 import { useStore } from "stores/store";
-import { useGetIntId } from "utils/useGetIntId";
+import useGetIntId from "utils/useGetIntId";
 
 interface ProductProps {}
 
-const Product: React.FC<ProductProps> = () => {
+const Product: FC<ProductProps> = () => {
   const { totalProducts, selectedProduct, loadProduct } =
     useStore().productStore;
   const id = useGetIntId();
 
   useEffect(() => {
-    if (totalProducts == 0) {
+    if (totalProducts === 0) {
       loadProduct(id);
     }
   }, [totalProducts, loadProduct, id]);

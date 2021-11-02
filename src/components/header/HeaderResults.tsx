@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
 import { observer } from "mobx-react-lite";
+import { FC } from "react";
 import { useStore } from "stores/store";
 import HeaderResult from "./HeaderResult";
 
 interface HeaderResultsProps {}
 
-const HeaderResults: React.FC<HeaderResultsProps> = () => {
+const HeaderResults: FC<HeaderResultsProps> = () => {
   const { resultsOpen, results } = useStore().searchStore;
 
   return (

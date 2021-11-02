@@ -1,10 +1,16 @@
 import { auth } from "configs/firebase";
+import {
+  sendEmailVerification,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 
 const login = async (email: string, password: string) => {
-  const res = await auth.signInWithEmailAndPassword(email, password);
+  const res = await signInWithEmailAndPassword(auth, email, password);
 
   if (!res.user?.emailVerified) {
-    auth.currentUser?.sendEmailVerification();
+    if (auth.currentUser) {
+      sendEmailVerification(auth.currentUser);
+    }
 
     throw new Error(
       "Email is not verified. We have sent the verification link again. Please check your inbox/spam."

@@ -1,10 +1,11 @@
 import { observer } from "mobx-react-lite";
+import { FC } from "react";
 import { useStore } from "stores/store";
 import ProfileHeader from "./ProfileHeader";
 
 interface ProfilePageProps {}
 
-const ProfilePage: React.FC<ProfilePageProps> = () => {
+const ProfilePage: FC<ProfilePageProps> = () => {
   const { userDetails } = useStore().userStore;
 
   return (

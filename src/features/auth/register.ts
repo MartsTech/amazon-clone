@@ -1,23 +1,33 @@
 import { auth, db } from "configs/firebase";
+import {
+  createUserWithEmailAndPassword,
+  sendEmailVerification,
+  updateProfile,
+} from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore";
 
 const register = async (name: string, email: string, password: string) => {
-  const res = await auth.createUserWithEmailAndPassword(email, password);
+  const res = await createUserWithEmailAndPassword(auth, email, password);
 
   const photoURL = `https://i.pravatar.cc/150?u=${email}`;
 
-  auth.currentUser?.updateProfile({
+  if (!auth.currentUser) {
+    throw new Error("Problem occurred");
+  }
+
+  updateProfile(auth.currentUser, {
     displayName: name,
     photoURL,
   });
 
-  await db.collection("users").doc(email).set({
+  await setDoc(doc(db, "users", email), {
     name,
     email,
-    photoURL: photoURL,
+    photoURL,
   });
 
   if (!res.user?.emailVerified) {
-    auth.currentUser?.sendEmailVerification();
+    sendEmailVerification(auth.currentUser);
 
     throw new Error(
       "Verify your email to complete registration. Check your inbox/spam for verification email."

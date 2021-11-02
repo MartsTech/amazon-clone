@@ -1,11 +1,12 @@
 import { observer } from "mobx-react-lite";
+import { FC } from "react";
 import { useStore } from "stores/store";
 
 interface ProductCategoryProps {
   category: string;
 }
 
-const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
+const ProductCategory: FC<ProductCategoryProps> = ({ category }) => {
   const { activeCategory, setActiveCategory } = useStore().productStore;
 
   return (
@@ -18,7 +19,7 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
          transition-opacity duration-200 cursor-pointer capitalize
          hover:opacity-100 before:underline hover:before:w-1/3
        ${
-         activeCategory == category &&
+         activeCategory === category &&
          "font-bold opacity-100 before:w-almost before:left-8"
        }`}
       style={{ flex: "0 0 auto" }}

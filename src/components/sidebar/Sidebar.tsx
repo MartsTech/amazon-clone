@@ -1,5 +1,6 @@
 import { observer } from "mobx-react-lite";
 import dynamic from "next/dynamic";
+import { FC } from "react";
 import { useStore } from "stores/store";
 import SidebarLogo from "./SidebarLogo";
 import SidebarMenu from "./SidebarMenu";
@@ -9,7 +10,7 @@ const ReactTooltip = dynamic(() => import("react-tooltip"), { ssr: false });
 
 interface SidebarProps {}
 
-const Sidebar: React.FC<SidebarProps> = () => {
+const Sidebar: FC<SidebarProps> = () => {
   const { sidebarActive } = useStore().commonStore;
 
   return (

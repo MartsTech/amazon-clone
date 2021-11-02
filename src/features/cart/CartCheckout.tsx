@@ -4,12 +4,13 @@ import { motion } from "framer-motion";
 import { observer } from "mobx-react-lite";
 import { useSession } from "next-auth/client";
 import { useRouter } from "next/router";
+import { FC } from "react";
 import { useStore } from "stores/store";
 import { errorAnimation } from "utils/animations";
 
 interface CartCheckoutProps {}
 
-const CartCheckout: React.FC<CartCheckoutProps> = () => {
+const CartCheckout: FC<CartCheckoutProps> = () => {
   const { cartTotal, cartTotalItems } = useStore().cartStore;
   const [session] = useSession();
   const router = useRouter();

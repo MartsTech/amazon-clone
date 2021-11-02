@@ -1,6 +1,6 @@
-import { createSessionBody } from "types/payment";
 import { NextApiRequest, NextApiResponse } from "next";
 import { Stripe } from "stripe";
+import { createSessionBody } from "types/payment";
 
 const stripe: Stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
@@ -49,7 +49,7 @@ const createCheckoutSession = async (
     customer_email: userDetails.email,
     metadata: {
       email: userDetails.email,
-      orderId: orderId,
+      orderId,
     },
   });
 

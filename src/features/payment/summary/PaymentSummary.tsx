@@ -1,11 +1,12 @@
 import { observer } from "mobx-react-lite";
+import { FC } from "react";
 import { useStore } from "stores/store";
 import PaymentButtons from "./PaymentButtons";
 import PaymentItems from "./PaymentItems";
 
 interface PaymentSummaryProps {}
 
-const PaymentSummary: React.FC<PaymentSummaryProps> = () => {
+const PaymentSummary: FC<PaymentSummaryProps> = () => {
   const { orderId } = useStore().paymentStore;
 
   return (
@@ -14,7 +15,7 @@ const PaymentSummary: React.FC<PaymentSummaryProps> = () => {
       rounded-lg shadow-lg self-start p-8"
     >
       <h5 className="text-xl font-semibold">Order Summary</h5>
-      <p>Order ID: {orderId ? orderId : "Generating..."}</p>
+      <p>Order ID: {orderId || "Generating..."}</p>
       <PaymentItems />
       <PaymentButtons />
     </div>

@@ -1,17 +1,18 @@
 import { motion } from "framer-motion";
+import { observer } from "mobx-react-lite";
 import { useRouter } from "next/router";
+import { FC } from "react";
+import { useStore } from "stores/store";
 import { Product as ProductType } from "types/product";
 import { pageTransition, pageZoom } from "utils/animations";
-import ProductInfo from "./ProductInfo";
 import ProductImage from "./ProductImage";
-import { useStore } from "stores/store";
-import { observer } from "mobx-react-lite";
+import ProductInfo from "./ProductInfo";
 
 interface ProductProps {
   product: ProductType;
 }
 
-const Product: React.FC<ProductProps> = ({ product }) => {
+const Product: FC<ProductProps> = ({ product }) => {
   const { loadProduct, selectedProduct, removeSelectedProduct } =
     useStore().productStore;
   const router = useRouter();

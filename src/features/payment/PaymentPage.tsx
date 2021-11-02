@@ -2,7 +2,7 @@ import { useElements, useStripe } from "@stripe/react-stripe-js";
 import { motion } from "framer-motion";
 import { observer } from "mobx-react-lite";
 import { useSession } from "next-auth/client";
-import { useEffect } from "react";
+import { FC, useEffect } from "react";
 import { useStore } from "stores/store";
 import { pageSlide, pageTransition } from "utils/animations";
 import PaymentMethod from "./method/PaymentMethod";
@@ -11,7 +11,7 @@ import PaymentSummary from "./summary/PaymentSummary";
 
 interface PaymentPageProps {}
 
-const PaymentPage: React.FC<PaymentPageProps> = () => {
+const PaymentPage: FC<PaymentPageProps> = () => {
   const { success, setStripe, setStripeElements } = useStore().paymentStore;
   const stripe = useStripe();
   const stripeElements = useElements();

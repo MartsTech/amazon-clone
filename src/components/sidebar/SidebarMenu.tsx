@@ -3,12 +3,13 @@ import HomeRoundedIcon from "@material-ui/icons/HomeRounded";
 import ShoppingCartRoundedIcon from "@material-ui/icons/ShoppingCartRounded";
 import WatchLaterRoundedIcon from "@material-ui/icons/WatchLaterRounded";
 import { observer } from "mobx-react-lite";
+import { FC } from "react";
 import { useStore } from "stores/store";
 import SidebarMenuItem from "./SidebarMenuItem";
 
 interface SidebarMenuProps {}
 
-const SidebarMenu: React.FC<SidebarMenuProps> = () => {
+const SidebarMenu: FC<SidebarMenuProps> = () => {
   const { cartTotalItems } = useStore().cartStore;
   const { totalBookmarks } = useStore().bookmarkStore;
 

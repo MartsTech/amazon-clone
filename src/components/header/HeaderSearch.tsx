@@ -1,12 +1,13 @@
 import SearchRoundedIcon from "@material-ui/icons/SearchRounded";
 import OnOutsideClick from "components/layouts/OutsideClick";
 import { observer } from "mobx-react-lite";
+import { FC } from "react";
 import { useStore } from "stores/store";
 import HeaderResults from "./HeaderResults";
 
 interface HeaderSearchProps {}
 
-const HeaderSearch: React.FC<HeaderSearchProps> = () => {
+const HeaderSearch: FC<HeaderSearchProps> = () => {
   const { searchQuery, setSearchQuery, closeResults, resultsOpen } =
     useStore().searchStore;
 

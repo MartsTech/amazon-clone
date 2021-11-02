@@ -1,6 +1,6 @@
 import VisibilityOffOutlinedIcon from "@material-ui/icons/VisibilityOffOutlined";
 import VisibilityOutlinedIcon from "@material-ui/icons/VisibilityOutlined";
-import { useState } from "react";
+import { FC, useState } from "react";
 import TextInput from "./TextInput";
 
 interface PasswordInputProps {
@@ -8,7 +8,7 @@ interface PasswordInputProps {
   label: string;
 }
 
-const PasswordInput: React.FC<PasswordInputProps> = ({ name, label }) => {
+const PasswordInput: FC<PasswordInputProps> = ({ name, label }) => {
   const [visible, setVisible] = useState(false);
 
   return (
@@ -21,12 +21,12 @@ const PasswordInput: React.FC<PasswordInputProps> = ({ name, label }) => {
           {visible ? (
             <VisibilityOutlinedIcon
               className="absolute top-4 right-4 cursor-pointer"
-              onClick={() => setVisible((visible) => !visible)}
+              onClick={() => setVisible((isVisible) => !isVisible)}
             />
           ) : (
             <VisibilityOffOutlinedIcon
               className="opacity-25 absolute top-4 right-4 cursor-pointer"
-              onClick={() => setVisible((visible) => !visible)}
+              onClick={() => setVisible((isVisible) => !isVisible)}
             />
           )}
         </>

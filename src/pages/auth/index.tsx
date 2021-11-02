@@ -1,16 +1,15 @@
 import { GetServerSideProps } from "next";
 import { getSession } from "next-auth/client";
 import Head from "next/head";
+import { FC } from "react";
 
 interface AuthProps {}
 
-const Auth: React.FC<AuthProps> = () => {
-  return (
-    <Head>
-      <title>Auth</title>
-    </Head>
-  );
-};
+const Auth: FC<AuthProps> = () => (
+  <Head>
+    <title>Auth</title>
+  </Head>
+);
 
 export default Auth;
 

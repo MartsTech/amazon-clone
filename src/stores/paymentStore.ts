@@ -7,9 +7,9 @@ import {
 } from "@stripe/stripe-js";
 import axios from "axios";
 import { db } from "configs/firebase";
+import { addDoc, collection, doc, serverTimestamp } from "firebase/firestore";
 import { makeAutoObservable, runInAction } from "mobx";
 import { store } from "./store";
-import firebase from "firebase/app";
 
 class PaymentStore {
   stripe: Stripe | null = null;
@@ -65,7 +65,7 @@ class PaymentStore {
       return;
     }
 
-    const userDetails = store.userStore.userDetails;
+    const { userDetails } = store.userStore;
 
     if (!userDetails) {
       this.error = "Please update your shipping details";
@@ -107,7 +107,7 @@ class PaymentStore {
     store.commonStore.setAppLoading(false);
   };
 
-  checkout = () => {
+  checkout = async () => {
     if (store.cartStore.cart.length === 0) {
       this.error = "Your cart is empty! Please select items to purchase.";
       return;
@@ -116,7 +116,7 @@ class PaymentStore {
     if (this.paymentMethod === "card") {
       this.checkoutCard();
     } else {
-      this.checkoutCash();
+      await this.checkoutCash();
     }
   };
 
@@ -126,7 +126,7 @@ class PaymentStore {
       return;
     }
 
-    const userDetails = store.userStore.userDetails;
+    const { userDetails } = store.userStore;
 
     if (!userDetails) {
       this.error = "Please update your shipping details";
@@ -194,38 +194,36 @@ class PaymentStore {
     store.commonStore.setAppLoading(false);
   };
 
-  private checkoutCash = () => {
-    const userDetails = store.userStore.userDetails;
+  private checkoutCash = async () => {
+    const { userDetails } = store.userStore;
 
     if (!userDetails) {
       this.error = "Please update your shipping details";
       return;
     }
 
-    db.collection("users")
-      .doc(userDetails.email)
-      .collection("orders")
-      .add({
-        created: firebase.firestore.FieldValue.serverTimestamp(),
-        amount: (
-          store.cartStore.cartTotal +
-          store.cartStore.cartTotal * 0.05 +
-          6.99
-        ).toFixed(2),
-        items: store.cartStore.cart,
-        type: "cash",
-      })
-      .then(() => {
-        runInAction(() => {
-          this.success = true;
-          this.error = null;
-          this.disabled = false;
-        });
+    const userRef = doc(db, "users", userDetails.email);
 
-        setTimeout(() => {
-          store.cartStore.clearCart();
-        }, 2000);
-      });
+    await addDoc(collection(userRef, "orders"), {
+      created: serverTimestamp(),
+      amount: (
+        store.cartStore.cartTotal +
+        store.cartStore.cartTotal * 0.05 +
+        6.99
+      ).toFixed(2),
+      items: store.cartStore.cart,
+      type: "cash",
+    });
+
+    runInAction(() => {
+      this.success = true;
+      this.error = null;
+      this.disabled = false;
+    });
+
+    setTimeout(() => {
+      store.cartStore.clearCart();
+    }, 2000);
 
     this.processing = false;
     store.commonStore.setAppLoading(false);

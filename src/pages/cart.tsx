@@ -2,19 +2,18 @@ import CartPage from "features/cart/CartPage";
 import { GetServerSideProps } from "next";
 import { getSession } from "next-auth/client";
 import Head from "next/head";
+import { FC } from "react";
 
 interface CartProps {}
 
-const Cart: React.FC<CartProps> = () => {
-  return (
-    <>
-      <Head>
-        <title>Cart</title>
-      </Head>
-      <CartPage />
-    </>
-  );
-};
+const Cart: FC<CartProps> = () => (
+  <>
+    <Head>
+      <title>Cart</title>
+    </Head>
+    <CartPage />
+  </>
+);
 
 export default Cart;
 

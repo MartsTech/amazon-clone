@@ -1,5 +1,5 @@
 import { observer } from "mobx-react-lite";
-import { useEffect, useRef } from "react";
+import { FC, useEffect, useRef } from "react";
 import { ToastContainer } from "react-toastify";
 import LoadingBar from "react-top-loading-bar";
 import { useStore } from "stores/store";
@@ -7,7 +7,7 @@ import RouteChange from "./ScrollToTop";
 
 interface AppLayoutProps {}
 
-const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
+const AppLayout: FC<AppLayoutProps> = ({ children }) => {
   const { appLoading } = useStore().commonStore;
   const loadingBar = useRef<any>(null);
 
@@ -23,7 +23,7 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
     <>
       <RouteChange />
       <ToastContainer position="bottom-right" hideProgressBar />
-      <LoadingBar ref={loadingBar} height={3} color="#f90" shadow={true} />
+      <LoadingBar ref={loadingBar} height={3} color="#f90" shadow />
       {children}
     </>
   );

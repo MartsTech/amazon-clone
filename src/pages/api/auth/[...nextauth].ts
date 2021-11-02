@@ -18,9 +18,8 @@ export default NextAuth({
 
         if (typeof name === "undefined") {
           return login(email, password);
-        } else {
-          return register(name, email, password);
         }
+        return register(name, email, password);
       },
     }),
     Providers.Google({

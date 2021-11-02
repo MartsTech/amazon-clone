@@ -2,6 +2,7 @@ import Fuse from "fuse.js";
 import { observer } from "mobx-react-lite";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { FC } from "react";
 import { useStore } from "stores/store";
 import { Product } from "types/product";
 
@@ -9,7 +10,7 @@ interface HeaderResultProps {
   result: Fuse.FuseResult<Product>;
 }
 
-const HeaderResult: React.FC<HeaderResultProps> = ({
+const HeaderResult: FC<HeaderResultProps> = ({
   result: {
     item: { id, image, title, description },
   },

@@ -1,14 +1,15 @@
 import { motion } from "framer-motion";
 import { observer } from "mobx-react-lite";
-import { useStore } from "stores/store";
 import Image from "next/image";
+import { FC } from "react";
+import { useStore } from "stores/store";
 
 interface ProductCoverProps {}
 
-const ProductCover: React.FC<ProductCoverProps> = () => {
+const ProductCover: FC<ProductCoverProps> = () => {
   const { selectedProduct } = useStore().productStore;
 
-  if (typeof selectedProduct == "undefined") {
+  if (typeof selectedProduct === "undefined") {
     return null;
   }
 

@@ -1,12 +1,13 @@
 import AccountCircleRoundedIcon from "@material-ui/icons/AccountCircleRounded";
 import { useSession } from "next-auth/client";
 import { useRouter } from "next/router";
+import { FC } from "react";
 import { useStore } from "stores/store";
 import SidebarMenuItem from "./SidebarMenuItem";
 
 interface SidebarUserProps {}
 
-const SidebarUser: React.FC<SidebarUserProps> = () => {
+const SidebarUser: FC<SidebarUserProps> = () => {
   const [session] = useSession();
   const { toggleSidebar } = useStore().commonStore;
 

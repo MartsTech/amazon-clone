@@ -4,12 +4,12 @@ import { observer } from "mobx-react-lite";
 import { GetServerSideProps } from "next";
 import { getSession, useSession } from "next-auth/client";
 import Head from "next/head";
-import { useEffect } from "react";
+import { FC, useEffect } from "react";
 import { useStore } from "stores/store";
 
 interface ProfileProps {}
 
-const Profile: React.FC<ProfileProps> = () => {
+const Profile: FC<ProfileProps> = () => {
   const { userDetails, loadUserDetails } = useStore().userStore;
   const [session] = useSession();
 

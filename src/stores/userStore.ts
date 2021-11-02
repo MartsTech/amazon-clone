@@ -1,10 +1,10 @@
 import { db } from "configs/firebase";
+import { doc, onSnapshot, setDoc, Timestamp } from "firebase/firestore";
 import { makeAutoObservable, runInAction } from "mobx";
+import moment from "moment";
 import { Product } from "types/product";
 import { UserDetails } from "types/user";
 import { store } from "./store";
-import firebase from "firebase/app";
-import moment from "moment";
 
 class UserStore {
   userDetails: UserDetails | null = null;
@@ -16,16 +16,13 @@ class UserStore {
   loadUserDetails = (email: string) => {
     store.commonStore.setAppLoading(true);
 
-    db.collection("users")
-      .doc(email)
-      .get()
-      .then((snapshot) => {
-        if (snapshot.exists) {
-          runInAction(() => {
-            this.userDetails = snapshot.data() as UserDetails;
-          });
-        }
-      });
+    onSnapshot(doc(db, "users", email), (snapshot) => {
+      if (snapshot.exists()) {
+        runInAction(() => {
+          this.userDetails = snapshot.data() as UserDetails;
+        });
+      }
+    });
 
     store.commonStore.setAppLoading(false);
   };
@@ -40,18 +37,14 @@ class UserStore {
       return;
     }
 
-    db.collection("users")
-      .doc(this.userDetails.email)
-      .collection("orders")
-      .doc(orderId)
-      .set({
-        created: firebase.firestore.Timestamp.fromDate(
-          moment.unix(created).toDate()
-        ),
-        amount: amount,
-        items: items,
-        type: "card",
-      });
+    const userRef = doc(db, "users", this.userDetails.email);
+
+    setDoc(doc(userRef, "orders", orderId), {
+      created: Timestamp.fromDate(moment.unix(created).toDate()),
+      amount,
+      items,
+      type: "card",
+    });
   };
 }
 

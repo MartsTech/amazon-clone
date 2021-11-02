@@ -3,7 +3,7 @@ import BookmarkRoundedIcon from "@material-ui/icons/BookmarkRounded";
 import ShoppingCartRoundedIcon from "@material-ui/icons/ShoppingCartRounded";
 import Button from "components/buttons/Button";
 import { observer } from "mobx-react-lite";
-import { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import ReactTooltip from "react-tooltip";
 import { useStore } from "stores/store";
 import { Product } from "types/product";
@@ -12,7 +12,7 @@ interface ProductButtonsProps {
   product: Product;
 }
 
-const ProductButtons: React.FC<ProductButtonsProps> = ({ product }) => {
+const ProductButtons: FC<ProductButtonsProps> = ({ product }) => {
   const { bookmarkRegistery, addBookmark, removeBookmark } =
     useStore().bookmarkStore;
   const { cartRegistery, cartTotalItems, addToCart, removeFromCart } =
@@ -22,9 +22,9 @@ const ProductButtons: React.FC<ProductButtonsProps> = ({ product }) => {
   const [inCart, setInCart] = useState(false);
 
   useEffect(() => {
-    const bookmarked = bookmarkRegistery.has(product.id);
+    const isBookmarked = bookmarkRegistery.has(product.id);
 
-    if (bookmarked) {
+    if (isBookmarked) {
       setBookmarked(true);
     } else {
       setBookmarked(false);
@@ -32,9 +32,9 @@ const ProductButtons: React.FC<ProductButtonsProps> = ({ product }) => {
   }, [product, bookmarkRegistery, bookmarkRegistery.size]);
 
   useEffect(() => {
-    const inCart = cartRegistery.has(product.id);
+    const isInCart = cartRegistery.has(product.id);
 
-    if (inCart) {
+    if (isInCart) {
       setInCart(true);
     } else {
       setInCart(false);

@@ -1,5 +1,6 @@
 import RemoveShoppingCartRoundedIcon from "@material-ui/icons/RemoveShoppingCartRounded";
 import { observer } from "mobx-react-lite";
+import { FC } from "react";
 import { useStore } from "stores/store";
 import { Product } from "types/product";
 
@@ -7,7 +8,7 @@ interface CartItemButtonsProps {
   item: Product;
 }
 
-const CartItemButtons: React.FC<CartItemButtonsProps> = ({ item }) => {
+const CartItemButtons: FC<CartItemButtonsProps> = ({ item }) => {
   const { addToCart, removeFromCart, removeAllItems } = useStore().cartStore;
 
   const { id, quantity } = item;
@@ -19,6 +20,7 @@ const CartItemButtons: React.FC<CartItemButtonsProps> = ({ item }) => {
             bg-[#fafafa] shadow-md whitespace-nowrap"
       >
         <button
+          type="button"
           className="bg-[#eee] border-none w-6 h-6
                 text-sm transition-all duration-200"
           onClick={() => removeFromCart(id)}
@@ -27,6 +29,7 @@ const CartItemButtons: React.FC<CartItemButtonsProps> = ({ item }) => {
         </button>
         <span className="p-2">{quantity}</span>
         <button
+          type="button"
           className="bg-[#eee] border-none w-6 h-6
                 text-sm transition-all duration-200"
           onClick={() => addToCart(item)}
@@ -35,6 +38,7 @@ const CartItemButtons: React.FC<CartItemButtonsProps> = ({ item }) => {
         </button>
       </div>
       <button
+        type="button"
         onClick={() => removeAllItems(id)}
         data-for="removeTooltip"
         data-tip="Remove from Cart"

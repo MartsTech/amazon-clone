@@ -1,9 +1,10 @@
 import { observer } from "mobx-react-lite";
+import { FC } from "react";
 import { useStore } from "stores/store";
 
 interface SidebarLogoProps {}
 
-const SidebarLogo: React.FC<SidebarLogoProps> = () => {
+const SidebarLogo: FC<SidebarLogoProps> = () => {
   const { sidebarActive, toggleSidebar } = useStore().commonStore;
 
   return (

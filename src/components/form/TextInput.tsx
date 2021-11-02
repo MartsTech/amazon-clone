@@ -1,15 +1,17 @@
 import { useField } from "formik";
 import { motion } from "framer-motion";
+import { FC } from "react";
 import { errorAnimation } from "utils/animations";
 
 interface TextFieldProps {
   name: string;
   label: string;
   type: string;
+  // eslint-disable-next-line no-undef
   Icon?: JSX.Element;
 }
 
-const TextField: React.FC<TextFieldProps> = ({
+const TextField: FC<TextFieldProps> = ({
   name,
   label,
   type,
@@ -37,7 +39,7 @@ const TextField: React.FC<TextFieldProps> = ({
         className={`absolute left-4 top-4 text-base opacity-75
         transition-all duration-200 group-focus-within:active__label
         group-hover:active__label group-active:active__label ${
-          (value != "" || type == "date") && "active__label"
+          (value !== "" || type === "date") && "active__label"
         }`}
       >
         {label}

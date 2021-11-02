@@ -7,6 +7,7 @@ import CenterLayout from "components/layouts/CenterLayout";
 import { Form, Formik } from "formik";
 import { ClientSafeProvider, signIn } from "next-auth/client";
 import { useRouter } from "next/router";
+import { FC } from "react";
 import { useStore } from "stores/store";
 import * as Yup from "yup";
 
@@ -14,7 +15,7 @@ interface LoginPageProps {
   providers: Record<string, ClientSafeProvider>;
 }
 
-const LoginPage: React.FC<LoginPageProps> = ({ providers }) => {
+const LoginPage: FC<LoginPageProps> = ({ providers }) => {
   const { setAppLoading } = useStore().commonStore;
   const router = useRouter();
 

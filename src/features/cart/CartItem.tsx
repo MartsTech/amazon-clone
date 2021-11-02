@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { FC } from "react";
 import { Product } from "types/product";
 import { errorAnimation } from "utils/animations";
 import CartItemDetails from "./CartItemDetails";
@@ -8,7 +9,7 @@ interface CartItemProps {
   item: Product;
 }
 
-const CartItem: React.FC<CartItemProps> = ({ item }) => {
+const CartItem: FC<CartItemProps> = ({ item }) => {
   const { id, image, title } = item;
 
   return (

@@ -1,11 +1,12 @@
 import { observer } from "mobx-react-lite";
+import { FC } from "react";
 import ReactTooltip from "react-tooltip";
 import { useStore } from "stores/store";
 import CartItem from "./CartItem";
 
 interface CartItemsProps {}
 
-const CartItems: React.FC<CartItemsProps> = () => {
+const CartItems: FC<CartItemsProps> = () => {
   const { cart } = useStore().cartStore;
 
   return (

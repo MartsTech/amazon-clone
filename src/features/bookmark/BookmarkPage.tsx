@@ -1,13 +1,14 @@
 import Product from "features/product/feed/Product";
 import { motion } from "framer-motion";
 import { observer } from "mobx-react-lite";
+import { FC } from "react";
 import { useStore } from "stores/store";
 import { pageTransition, pageZoom } from "utils/animations";
 import BookmarkEmpty from "./BookmarkEmpty";
 
 interface BookmarkPageProps {}
 
-const BookmarkPage: React.FC<BookmarkPageProps> = () => {
+const BookmarkPage: FC<BookmarkPageProps> = () => {
   const { bookmarks } = useStore().bookmarkStore;
 
   return (

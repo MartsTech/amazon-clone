@@ -1,5 +1,6 @@
 import { useField } from "formik";
 import { motion } from "framer-motion";
+import { FC } from "react";
 import { errorAnimation } from "utils/animations";
 import { countries } from "utils/data";
 
@@ -9,11 +10,7 @@ interface SelectCountryProps {
   type: string;
 }
 
-const SelectCountry: React.FC<SelectCountryProps> = ({
-  name,
-  label,
-  ...props
-}) => {
+const SelectCountry: FC<SelectCountryProps> = ({ name, label, ...props }) => {
   const [field, { touched, error, value }] = useField(name);
 
   return (
@@ -27,6 +24,7 @@ const SelectCountry: React.FC<SelectCountryProps> = ({
         outline-none w-80 font-bold transition-all duration-200 focus:shadow-md
         hover:shadow-lg active:shadow-lg ${error && "ring-1 ring-[#dc143c]"}`}
       >
+        {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
         <option selected value="" />
         {countries.map((item, index) => (
           <option key={index} value={item.abbreviation}>
@@ -39,7 +37,7 @@ const SelectCountry: React.FC<SelectCountryProps> = ({
         className={`absolute left-4 top-4 text-base opacity-75
           transition-all duration-200 group-focus-within:active__label
           group-hover:active__label group-active:active__label ${
-            value != "" && "active__label"
+            value !== "" && "active__label"
           }`}
       >
         {label}
